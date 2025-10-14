@@ -1,0 +1,1 @@
+Desenvolver uma página web para controle de gastos pessoais, permitindo ao usuário registrar despesas parceladas, informando valor, quantidade de parcelas e datas, armazenar os dados em um banco de dados e exibir de forma organizada em uma tabela na interface, facilitando o acompanhamento financeiro.
