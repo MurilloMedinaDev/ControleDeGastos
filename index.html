@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle gastos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+    <h1 id="titulo">Controle de gastos</h1>
+
+    <section class="Conteudo">
+        <div class="campos">
+            <input type="text" id="nomeId" placeholder="Nome">
+            <input type="date" id="dataId">
+            <br>
+    <input type="text" id="valorId" placeholder="valor">
+<label id="parcelasId"> Nº Parcela:</label><br>
+
+  <div class="inputs-parcelas">
+    <input type="number" id="parcelaAtual" min="1" placeholder="1">
+    <span>Qnt parcela:</span>
+    <input type="number" id="totalParcelas" min="1" placeholder="3">
+  </div>
+
+</div>
+
+
+
+  
+    <div class="btnInputs">
+    <input type="button" id="novoGastosBtn" value="Adicionar Novo Item">
+    <input type="button" id="removerGastosBtn" value="Remover Gasto">
+    <input type="button" id="verGastosBtn" value="Ver Itens">
+    </div>
+
+    
+</section>
+    </main>
+    <footer> &copy 2025 Murillo Medina </footer>
+
+
+
+<div class="itensLista">
+  <div class="tabela">
+    <!-- Cabeçalho -->
+  
+    <div class="cabecalho">
+      <div>ID</div>
+      <div>Nome</div>
+      <div>Valor</div>
+      <div>Data</div>
+      <div>Parcela</div>
+      <div>Total Parc</div>
+    </div>
+    
+
+    <!-- Linha de dados -->
+    <div class="linha">
+      <div>X</div>
+      <div>XXXXX</div>
+      <div>XXXX</div>
+      <div>XX/XX/XXXX</div>
+      <div>X</div>
+      <div>X</div>
+    </div>
+
+    <div class="linha">
+      <div>Y</div>
+      <div>YYYYY</div>
+      <div>ZZZZ</div>
+      <div>YY/YY/YYYY</div>
+      <div>Y</div>
+      <div>Y</div>
+    </div>
+  </div>
+</div>
+
+    
+<script src="script.js"></script>
+</body>
+
+</html> 
