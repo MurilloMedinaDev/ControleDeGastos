@@ -1,196 +1,116 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-*{
-    margin: 0;
-      font-family: "SUSE Mono", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
 
- 
- 
-
-}
-body {
+* {
   margin: 0;
+  box-sizing: border-box;
+  font-family: "SUSE Mono", sans-serif;
+}
+
+body {
   height: 100vh;
   background-image:
-
     radial-gradient(circle at center, rgba(0,0,0,0) 70%, rgba(0,0,0,0.6) 100%),
     url("image.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; 
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+main {
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 40%;
+  min-width: 300px;
+  padding: 3%;
+  border-radius: 20px;
+  box-shadow:
+    inset -1vw -1vw 2vw rgba(128, 0, 255, 0.226),
+    inset -1vw 1vw 2vw rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
- main{
-    background-color: rgba(0, 0, 0, 0.651);
- 
-    display:flexbox;
-    height: 50vh;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 20px;
-    margin-top:20vh;
-
-  box-shadow: 
- 
-  inset -15px -15px 25px rgba(128, 0, 255, 0.226),  
-    
-    inset -15px 15px 25px rgba(0, 0, 0, 0.5),       
-    inset 15px -15px 25px rgba(0, 0, 0, 0.5),       
-    inset 15px 15px 25px rgba(128, 0, 255, 0.226);   
-
-} 
-
-#titulo{
-    text-align: center;
-    color: rgb(255, 255, 255);
-    position: relative;
-    top: 20px;
-    font-size: 45px;
-
+#titulo {
+  color: #fff;
+  text-align: center;
+  font-size: 3vw;
   font-family: "Bitcount Prop Single Ink", system-ui;
-  font-optical-sizing: auto;
-  font-weight:weight;
-  font-style:normal;
-
-    text-shadow: 
+  text-shadow:
     0 0 10px rgba(178, 109, 255, 0.8),
-    0 0 20px rgba(178, 109, 255, 0.6),
-    0 0 40px rgba(178, 109, 255, 0.4),
-    0 0 80px rgba(178, 109, 255, 0.2);
-   
+    0 0 20px rgba(178, 109, 255, 0.6);
+  margin-bottom: 3vh;
 }
 
-.btnInputs input{
-    background-color: rgb(141, 67, 224);
-  padding: 20px 20px;   
-  font-size: 18px;      
-  border-radius: 15px;     
-    position: relative;
-  top: 40px;
-  
-  box-shadow: 
-    inset -15px -15px 25px rgba(128, 0, 255, 0.25), /* superior esquerda roxa */
-    inset -15px 15px 25px rgba(0, 0, 0, 0.5),       /* inferior esquerda preta */
-    inset 15px -15px 25px rgba(0, 0, 0, 0.5),       /* superior direita preta */
-    inset 15px 15px 25px rgba(0, 0, 0, 0.25);   /* inferior direita roxa */
-
-   
-
+.Conteudo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
 }
 
-#novoGastosBtn{
-  color: #FFFF;
-  position: relative;
-    left: 0px;
-   top: 60px;
-    
-}
-#removerGastosBtn{
-background-color: rgb(15, 15, 15);
-  color: #ffffff;
-position: relative;
-left: 170px;
-top: 60px;
-
-    text-shadow: 
-    0 0 10px rgba(178, 109, 255, 0.8),
-    0 0 20px rgba(178, 109, 255, 0.6),
-    0 0 40px rgba(178, 109, 255, 0.4),
-    0 0 80px rgba(178, 109, 255, 0.2);
-   
-}
-#verGastosBtn{
-  position: relative;
-  right: 180px;
- top: 60px;
-
-  color: #ffffff;
-  text-shadow: 
-      0 0 10px rgba(178, 109, 255, 0.8),
-    0 0 20px rgba(178, 109, 255, 0.6),
-    0 0 40px rgba(178, 109, 255, 0.4),
-    0 0 80px rgba(178, 109, 255, 0.2);
-
-
+.campos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+  width: 100%;
 }
 
-
-.Conteudo{
-position:relative;
-top: 60px;
-left: 10%;
-
-
-}
-
-.campos input{
-    padding: 15px 30px;   
-  font-size: 20px;       
-  border-radius: 8px;  
-  
-}
-#parcelasId{
-  font-size: 20px;
-  margin-right: 10px;
-  color: #fff; 
-  position: relative;
-  top: 20px;
-   left: 15px;
-}
-
-#parcelaAtual{
-     padding:1px 10px;
-     width: 50px;
-  font-size: 20px;
+.campos input {
+  width: 80%;
+  max-width: 400px;
+  padding: 1.2vh 1vw;
+  font-size: 1rem;
   border-radius: 8px;
   border: none;
-   position: relative;
-  top: -25px;
-left: 513px;
 }
 
-#totalParcelas{
-  padding: 1px 10px;
-  width: 50px;
-  font-size: 20px;
-  border-radius: 8px;
+.inputs-parcelas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  color: #fff;
+  font-size: 1rem;
+}
+
+#parcelasId {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 1vh;
+}
+
+.btnInputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2vw;
+  margin-top: 3vh;
+}
+
+.btnInputs input {
+  background-color: rgb(141, 67, 224);
+  color: #fff;
+  padding: 1vh 2vw;
+  font-size: 1rem;
+  border-radius: 15px;
   border: none;
-     position: relative;
-  top: 15px;
-left: 280px;
-
-}
-span{
-       position: relative;
-  top: 15px;
-left: 280px;
-color: #fff; 
-font-size: 20px;
-
-
+  cursor: pointer;
+  box-shadow:
+    inset -0.8vw -0.8vw 1.5vw rgba(128, 0, 255, 0.25),
+    inset 0.8vw 0.8vw 1.5vw rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
 }
 
-
-
-
-
-#valorId{
-  position: relative;
-  top: 40px;
-}
-#dataId{
-   position: relative;
-    left: 15px;
-      padding: 10px 25px;
-
+.btnInputs input:hover {
+  transform: scale(1.05);
 }
 
 footer {
@@ -200,76 +120,44 @@ footer {
   width: 100%;
   text-align: center;
   color: #fff;
-  
-
-
-
-     text-shadow: 
+  padding: 1vh 0;
+  text-shadow:
     0 0 10px rgba(178, 109, 255, 0.8),
-    0 0 20px rgba(178, 109, 255, 0.6),
-    0 0 40px rgba(178, 109, 255, 0.4),
-    0 0 80px rgba(178, 109, 255, 0.2);
-   
-
+    0 0 20px rgba(178, 109, 255, 0.6);
 }
 
- .itensLista {
-  display: none;
-  color: #fff;
-  position: absolute;
-  top:10px;
-  left: 10px;
-  background-color: #0c0c0c33;
-  height: 700px;
-  border-radius: 10px;
-  padding: 10px;
-  width: 720px;
-  font-size: 20px;
-
-   text-shadow: 
-    0 0 10px rgba(178, 109, 255, 0.8),
-    0 0 20px rgba(178, 109, 255, 0.6),
-    0 0 40px rgba(178, 109, 255, 0.4),
-    0 0 80px rgba(178, 109, 255, 0.2);
-
-    box-shadow:  
-    inset -15px -15px 25px rgba(128, 0, 255, 0.25),  
-    inset -15px 15px 25px rgba(0, 0, 0, 0.5),        
-    inset 15px -15px 25px rgba(0, 0, 0, 0.5),       
-    inset 15px 15px 25px rgba(0, 0, 0, 0.25);   
- 
-
-
-.tabela {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); 
-  
-  
+/* Responsividade */
+@media (max-width: 1024px) {
+  main {
+    width: 60%;
+  }
+  #titulo {
+    font-size: 4vw;
+  }
 }
 
-.cabecalho {
-  display: contents; /* faz os filhos participarem do grid da tabela */
-  
-  text-align: center;
-  font-weight: bold;
+@media (max-width: 768px) {
+  main {
+    width: 80%;
+    padding: 5%;
+  }
+  #titulo {
+    font-size: 6vw;
+  }
+  .btnInputs input {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .campos input {
+    width: 90%;
+  }
 }
 
-.cabecalho div{
-  background-color: blueviolet;
-  width: 120px;
-    
+@media (max-width: 480px) {
+  main {
+    width: 90%;
+  }
+  #titulo {
+    font-size: 7vw;
+  }
 }
-
- 
-
-
-.linha {
-  display: contents; /* também participa do grid */
-  text-align: center;
-  
-}
-
-
-
-}
-
