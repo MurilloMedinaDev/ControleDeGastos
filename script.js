@@ -1,10 +1,19 @@
 const botao = document.getElementById('verGastosBtn');
-  const divItens = document.querySelector('.itensLista');
+const divItens = document.querySelector('.itensLista');
+const salvarItens = document.getElementById('novoGastosBtn');
 
-  botao.addEventListener('click', () => {
-    if (divItens.style.display === 'none' || divItens.style.display === '') {
-      divItens.style.display = 'block'; // Mostra a div
-    } else {
-      divItens.style.display = 'none';  // Esconde a div
-    }
-  });
+const nomeVar = document.getElementById('nomeId');
+
+salvarItens.addEventListener('click', () => {
+  const nome = nomeVar.value.trim(); 
+
+  if (nome === "") {
+    alert("Nome vazio");
+    return;
+  }
+
+else{
+    alert("Item salvo:" + nome);
+
+}
+});
