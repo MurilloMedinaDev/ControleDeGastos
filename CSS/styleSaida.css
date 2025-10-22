@@ -1,0 +1,146 @@
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgb(94, 94, 94) 0%, rgb(0, 0, 0) 100%);
+    font-family: Arial, sans-serif;
+    color: rgb(204, 204, 204);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px; /* espaço para o título fixo */
+    position: relative;
+  }
+
+  #tituloP{
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: rgba(148, 148, 148, 0.452);
+    margin: 0;
+    z-index: 100;
+  }
+
+  
+
+  main {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 1px solid rgb(85, 85, 85);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  main h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: rgb(190, 190, 190);
+  }
+  
+  /* ==============================
+     4. CAMPOS DE INPUT
+     ============================== */
+  .campos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .campos input {
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgb(85, 85, 85);
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+  }
+  
+  .campos input::placeholder {
+    color: rgb(136, 136, 136);
+  }
+  
+  .campos input:focus {
+    outline: none;
+    border-color: rgb(204, 204, 204);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  #parcelasId{
+    margin-top: -30px;
+    margin-right: 290px;
+  }
+  /* ==============================
+     5. INPUTS PARCELAS
+     ============================== */
+  .inputs-parcelas {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top:-80px;
+    margin-left: 80px;
+
+  }
+  .inputs-parcelas input{
+  
+    width: 60px;       /* largura menor, ajustável */
+    padding: 8px;      /* reduz padding para ficar proporcional */
+    font-size: 14px;   /* ajusta fonte para caber melhor */
+    
+  }
+  
+  .inputs-parcelas span {
+    color: rgb(204, 204, 204);
+  }
+  
+  /* ==============================
+     6. BOTÕES
+     ============================== */
+  .btnInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btnInputs input[type="button"] {
+    width: 100%;
+    padding: 13px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(119, 119, 119);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+  }
+  
+  .btnInputs input[type="button"]:hover {
+    background-color: rgb(0, 255, 157);
+    border-color: rgb(255, 255, 255);
+    color: rgb(46, 46, 46);
+  }
+  
+  /* ==============================
+     7. RODAPÉ
+     ============================== */
+  footer {
+    margin-top: 50px;
+    font-size: 13px;
+    color: rgb(153, 153, 153);
+    text-align: center;
+  }
+  

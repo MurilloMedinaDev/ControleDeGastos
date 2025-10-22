@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="/ControleDeGastos/CSS/styleCadastro.css"> 
 </head>
 <body>
-    <h1>Cadastro Login</h1>
-    
+  <h1 id="tituloP">Controle Receita</h1>
+  <main>
+    <h2 id="titulo">Cadastro</h2>
+
+    <section class="Conteudo">
+      <div class="campos">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        
+      </div>
+
+      <div class="btnInputs">
+        <input type="button" value="Cadastrar" id="cadastrarBtn">
+        <input type="button" value="Voltar/Login" id="voltarBtn">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 - Controle de Gastos - Murillo Medina
+  </footer>
 </body>
 </html>
