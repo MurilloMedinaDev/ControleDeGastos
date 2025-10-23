@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
   background: radial-gradient(circle at top, rgb(94, 94, 94) 0%, rgb(0, 0, 0) 100%);
   font-family: Arial, sans-serif;
-  color: rgb(204, 204, 204); /* #ccc */
+  color: rgb(204, 204, 204); 
 }
 
 /* Container principal */
@@ -35,8 +35,8 @@ main {
 }
 
 #tituloP {
-  position: absolute; /* fixa o título em relação à tela */
-  top: 80px;          /* distância do topo */
+  position: absolute; 
+  top: 80px;         
   left: 50%;        
   transform: translateX(-50%); 
   font-size: 25px;

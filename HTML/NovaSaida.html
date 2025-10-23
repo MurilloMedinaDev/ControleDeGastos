@@ -17,20 +17,40 @@
             <input type="text" id="nomeId" placeholder="Nome">
             <input type="number" id="valorId" placeholder="valor">
             <input type="date" id="dataId">
+            
+            <select id="categoria" name="opcao" required>
+              <option value="0">Categoria..</option>
+              <option value="1">Alimentação</option>
+              <option value="2">Entretenimento</option>
+              <option value="3">Celular</option>
+              <option value="4">Educação</option>
+              <option value="5">Tecnologia</option>
+              <option value="6">Saúde</option>
+              <option value="7">Casa</option>
+              <option value="8">Vestuario</option>
+              <option value="9">Contas</option>
+              <option value="10">Beleza</option>
+              <option value="11">Pets</option>
+              <option value="12">Carro</option>
+              <option value="13">Restaurante</option>
+              <option value="14">Musica</option>
+              <option value="15">Outros</option>
+            </select>
+            
             <br>
 <label id="parcelasId"> Nº Parcela:</label><br>
 
   <div class="inputs-parcelas">
     <input type="number" id="parcelaAtual" min="1" placeholder="1">
     <span>Qnt parcela:</span>
-    <input type="number" id="totalParcelas" min="1" placeholder="3">
+    <input type="number" id="totalParcelas" min="1" placeholder="0">
   </div>
 
 </div>
 
     <div class="btnInputs">
     <input type="button" id="novoGastosBtn" value="Adicionar Novo Item">
-    <input type="button" id="verGastosBtn" value="Voltar/Sair">
+    <input type="button" id="S-voltarBtn" value="Voltar/Sair">
     </div>
 
     
@@ -38,7 +58,7 @@
     </main>
     <footer> &copy 2025 Controle Receita - Murillo Medina </footer>
     
-<script src="/ControleDeGastos/JS/scriptEntrada.js"></script>
+<script src="/ControleDeGastos/JS/scriptSaida.js"></script>
 </body>
 
 </html> 

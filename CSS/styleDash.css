@@ -1,0 +1,80 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgb(66, 66, 66) 0%, rgb(0, 0, 0) 100%);
+    font-family: Arial, sans-serif;
+    color: rgb(204, 204, 204);
+  
+  }
+
+  .Caixas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+   }
+
+
+.container{
+  background-color: rgba(255, 255, 255, 0.03);
+  width: 24vw;
+  height: 40vh;
+  border-radius: 20px;
+  border: 1px solid rgb(85, 85, 85); /* #555 */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  display: flex;
+  font-size: 3vh;
+ 
+
+}
+
+
+
+
+.container-perfil .container{
+
+
+}
+
+.container-Categorias .container{
+  width: 45vw;
+  height: 50vh;
+ 
+}
+.container-ValorEntrada .container{
+  width: 11vw;
+  height: 20vh; 
+  font-size: 5vh;
+  align-items: center;
+color: aquamarine;
+
+}
+
+.container-ValorSaida .container{
+  width: 11vw;
+  height: 20vh;
+  font-size: 5vh;
+  align-items: center;
+  color: rgb(247, 76, 76);
+} 
+.container-Detalhes .container{
+  width: 29vw;
+  height: 40vh;
+
+}
+.container-Detalhes2 .container{
+  width:15vw;
+  
+}
+.container-Movimentacao .container{
+  margin-top: -30vh;
+  height: 70vh;
+  
+
+
+}

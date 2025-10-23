@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="/ControleDeGastos/CSS/styleDash.css">
+</head>
+<body>
+
+    
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#" id="btnGasto">Adicionar Gasto</a></li>
+            <li><a href="#" id="btnLucro">Adicionar Lucro</a></li>
+            <li><a href="#" id="btnExtrato">Extrato</a></li>
+            <li><a href="#" id="btnSair">Sair</a></li>
+        </ul>
+    </div>
+
+   
+    <div class="main-content">
+        <h1>DashBoard</h1>
+        <div class="Caixas">
+            <div class="container-perfil">
+                <div class="container">
+                    <h3 id="nomeBD">Nome</h3>
+                    <h3 id="emailBD">email@gmail.com</h3>
+                </div>
+            </div>
+            
+            <div class="container-Categorias">
+                <div class="container">
+                    <p id="listCategorias">Categorias</p>
+                </div>
+            </div> 
+
+            <div class="container-ValorEntrada">
+                <div class="container">
+                    <div id="totalEntrada">R$00,00</div>
+                </div>
+            </div>
+
+            <div class="container-ValorSaida">
+                <div class="container">
+                    <div id="totalSaida">R$00,00</div>
+                </div>
+            </div> 
+
+            <div class="container-GraficoPizza">
+                <div class="container">
+                    <p id="textgraficoPizza">Grafico-pizza</p>
+                </div>
+            </div> 
+
+            <div class="container-Detalhes">
+                <div class="container">
+                    <p id="textDetalhes">Detalhes</p>
+                </div>
+            </div> 
+
+            <div class="container-Detalhes2">
+                <div class="container">
+                    <p id="textDetalhes2">Detalhes2</p>
+                </div>
+            </div> 
+
+            <div class="container-Movimentacao">
+                <div class="container">
+                    <p id="textMovimentacao">Movimentação</p>
+                </div>
+            </div> 
+        </div>
+
+      
+        <button id="adicionarSaidaBtn">Saida</button>
+        <button id="adicionarEntradaBtn">Entrada</button>
+        <button id="SairLoginBtn">Sair</button>
+    </div>
+
+    <script src="/ControleDeGastos/JS/dash.js"></script>
+</body>
+</html>

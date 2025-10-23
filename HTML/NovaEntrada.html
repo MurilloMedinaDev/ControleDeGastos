@@ -1,12 +1,55 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Entrada</title>
+    <link rel="stylesheet" href="/ControleDeGastos/CSS/styleSaida.css">
 </head>
 <body>
-    <h1>Adicionar Entrada</h1>
+  <h1 id="tituloP">Controle de gastos</h1>
+    <main>
+      <h2 id="titulo">Entrada</h2>
+
+    <section class="Conteudo">
+        <div class="campos">
+            <input type="text" id="nomeId" placeholder="Nome">
+            <input type="number" id="valorId" placeholder="valor">
+            <input type="date" id="dataId">
+            
+            <select id="categoria" name="opcao" required>
+              <option value="00">Categoria..</option>
+              <option value="01">Salario</option>
+              <option value="02">Investimento</option>
+              <option value="03">Extra</option>
+              <option value="04">Décimo</option>
+              <option value="05">Outros</option>
+             
+            </select>
+            
+            <br>
+<label id="parcelasId"> Nº Parcela:</label><br>
+
+  <div class="inputs-parcelas">
+    <input type="number" id="parcelaAtual" min="1" placeholder="1">
+    <span>Qnt parcela:</span>
+    <input type="number" id="totalParcelas" min="1" placeholder="0">
+  </div>
+
+</div>
+
+    <div class="btnInputs">
+    <input type="button" id="novoGastosBtn" value="Adicionar Novo Item">
+    <input type="button" id="E-voltarBtn" value="Voltar/Sair">
+    </div>
+
     
+</section>
+    </main>
+    <footer> &copy 2025 Controle Receita - Murillo Medina </footer>
+    
+<script src="/ControleDeGastos/JS/scriptEntrada.js"></script>
 </body>
-</html>
+
+</html> 
