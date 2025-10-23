@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="/ControleDeGastos/CSS/styleDash.css">
 </head>
 <body>
-
-    
+    <button class="btn-toggle" onclick="toggleSidebar()">☰</button>
     <div class="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="#" id="btnGasto">Adicionar Gasto</a></li>
-            <li><a href="#" id="btnLucro">Adicionar Lucro</a></li>
-            <li><a href="#" id="btnExtrato">Extrato</a></li>
-            <li><a href="#" id="btnSair">Sair</a></li>
-        </ul>
-    </div>
+        <div class="menu-header">
+            <h2>Menu</h2>
+        </div>
+      
+        <nav class="menu-links">
+          <a href="NovaSaida.html">Nova Saida</a>
+          <a href="NovaEntrada.html">Nova Entrada</a>
+          <a href="">Extrato</a>
+          <a href="index.html">Sair</a>
+        </nav>
+      </div>
+  
 
    
     <div class="main-content">
@@ -74,9 +77,6 @@
         </div>
 
       
-        <button id="adicionarSaidaBtn">Saida</button>
-        <button id="adicionarEntradaBtn">Entrada</button>
-        <button id="SairLoginBtn">Sair</button>
     </div>
 
     <script src="/ControleDeGastos/JS/dash.js"></script>

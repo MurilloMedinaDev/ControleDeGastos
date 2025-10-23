@@ -12,6 +12,94 @@
     color: rgb(204, 204, 204);
   
   }
+/* Botão fixo */
+.btn-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+
+.btn-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(85, 85, 85, 0.007);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.014);
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.sidebar.ativa {
+  width: 150px;
+}
+
+.menu-header {
+  margin-left: 30px;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.ativa .menu-header {
+  opacity: 1;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.menu-links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.ativa .menu-links a {
+  opacity: 1;
+}
+
+.menu-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+
+.main-content{
+margin-left: 5vw;
+margin-top:0vh;
+transition: margin-left 0.4s ease;  /* transição suave */
+  }
+
+  /* Quando sidebar aberta */
+.sidebar.ativa ~ .main-content {
+  margin-left: 15vw; 
+}
+
+
+
+
+
 
   .Caixas{
     display: flex;
@@ -37,12 +125,15 @@
 
 
 .container-perfil .container{
+  width: 24vw;
+  height: 50vh;
+
 
 
 }
 
 .container-Categorias .container{
-  width: 45vw;
+  width: 36vw;
   height: 50vh;
  
 }
@@ -63,7 +154,7 @@ color: aquamarine;
   color: rgb(247, 76, 76);
 } 
 .container-Detalhes .container{
-  width: 29vw;
+  width: 20vw;
   height: 40vh;
 
 }

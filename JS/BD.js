@@ -95,6 +95,7 @@ async function CriarPopular(email,senha) {
   try {
     await CriarPopular('usuarioMaster@gmail.com',999);
     console.log('Tabela criada e dados inseridos com sucesso!');
+    
   } catch (err) {
     console.error(err);
   }
