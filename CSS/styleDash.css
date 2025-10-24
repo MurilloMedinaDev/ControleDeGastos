@@ -141,7 +141,7 @@ transition: margin-left 0.4s ease;  /* transição suave */
 }
 #imgUser{
 margin-left: 2vw;
-height: 25vh;
+height: 30vh;
 width: 15vw;
 
 }
@@ -194,4 +194,86 @@ font-weight: 500;
   align-items: center;
   
   
+}.barras-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px; /* espaço entre as colunas */
+  margin-top: 50px;
+  
+}
+
+.barras-categorias {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 48%; /* duas colunas lado a lado */
+}
+
+.barra-container {
+  width: 100%;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 25px;
+}
+
+.barra {
+  height: 100%;
+  text-align: center;
+  color: white;
+  line-height: 25px;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.5s ease;
+}
+
+/* Cores individuais */
+.barra1 { background: linear-gradient(90deg, #ff2525, #ff7b7b); }
+.barra2 { background: linear-gradient(90deg, #2196f3, #6ec1ff); }
+.barra3 { background: linear-gradient(90deg, #ff9800, #ffc266); }
+.barra4 { background: linear-gradient(90deg, #9c27b0, #d17fff); }
+.barra5 { background: linear-gradient(90deg, #4caf50, #8de78d); }
+.barra6 { background: linear-gradient(90deg, #607d8b, #b0bec5); }
+
+.barra7  { background: linear-gradient(90deg, #ffb300, #ffe082); }
+.barra8  { background: linear-gradient(90deg, #3f51b5, #7986cb); }
+.barra9  { background: linear-gradient(90deg, #009688, #4db6ac); }
+.barra10 { background: linear-gradient(90deg, #f44336, #ef9a9a); }
+.barra11 { background: linear-gradient(90deg, #8bc34a, #aed581); }
+.barra12 { background: linear-gradient(90deg, #795548, #a1887f); }
+
+
+.grafico-pizza {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.pizza {
+  width: 150px;   
+  height: 150px; 
+  border-radius: 50%;
+  background: conic-gradient(
+    #ff2525 0% 20%,
+    #2196f3 20% 30%,
+    #ff9800 30% 35%,
+    #9c27b0 35% 45%,
+    #4caf50 45% 60%,
+    #607d8b 60% 100%
+  );
+}
+
+.legenda {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;  
+}
+
+.legenda .cor {
+  display: inline-block;
+  width: 10px;   
+  height: 10px;  
+  margin-right: 5px;
 }
