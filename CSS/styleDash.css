@@ -210,18 +210,18 @@ h1 {
 }
 
 /* ===== CORES BARRAS ===== */
-.barra1 { background: linear-gradient(90deg, #ff3d3d, #ff8080); }
-.barra2 { background: linear-gradient(90deg, #2196f3, #6ec1ff); }
-.barra3 { background: linear-gradient(90deg, #ffa726, #ffcc80); }
-.barra4 { background: linear-gradient(90deg, #ab47bc, #ce93d8); }
-.barra5 { background: linear-gradient(90deg, #66bb6a, #a5d6a7); }
-.barra6 { background: linear-gradient(90deg, #78909c, #cfd8dc); }
-.barra7 { background: linear-gradient(90deg, #3dffe5, #31a6aa); }
-.barra8 { background: linear-gradient(90deg, #f34b21, #6ec1ff); }
-.barra9 { background: linear-gradient(90deg, #ba26ff, #9e00fa); }
-.barra10{ background: linear-gradient(90deg, #e0190b, #ce93d8); }
-.barra11 { background: linear-gradient(90deg, #ff7606, #a5cfd6); }
-.barra12 { background: linear-gradient(90deg, #03ff57, #cfd8dc); }
+.barra1 { background: linear-gradient(90deg, #850000,  #a53e3e); }
+.barra2 { background: linear-gradient(90deg, #013b6b, #6ec1ff); }
+.barra3 { background: linear-gradient(90deg, #a56300, #ffcc80); }
+.barra4 { background: linear-gradient(90deg, #610172, #ce93d8); }
+.barra5 { background: linear-gradient(90deg, #023605, #176e1a); }
+.barra6 { background: linear-gradient(90deg, #3b3b3b, #6a6d6d); }
+.barra7 { background: linear-gradient(90deg, #02584d, #31a6aa); }
+.barra8 { background: linear-gradient(90deg, #dd2f03, #ff5b32); }
+.barra9 { background: linear-gradient(90deg, #b90559, #b90559); }
+.barra10{ background: linear-gradient(90deg, #ff1201, #db9898); }
+.barra11 { background: linear-gradient(90deg, #0640ff, #68a0aa); }
+.barra12 { background: linear-gradient(90deg, #00812b, #085a2a); }
 
 /* ===== ENTRADA / SAÍDA ===== */
 .container-ValorEntrada .container,

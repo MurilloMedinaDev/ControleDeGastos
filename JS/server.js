@@ -20,7 +20,7 @@ async function conectarBanco() {
     CREATE TABLE IF NOT EXISTS usuario (
       ID_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT,
-      email TEXT,
+      email TEXT UNIQUE,
       senha TEXT
     )
   `);
@@ -28,34 +28,59 @@ async function conectarBanco() {
   return conexaoBanco;
 }
 
-// Rota para cadastrar usuário
-servidor.post('/cadastrar', async (dadosDoCliente, respostaDoServidor) => {
-  // Pega os dados enviados pelo cliente
-  const nomeUsuario = dadosDoCliente.body.nome;
-  const emailUsuario = dadosDoCliente.body.email;
-  const senhaUsuario = dadosDoCliente.body.senha;
+// 🟩 Rota para cadastrar usuário
+servidor.post('/cadastrar', async (req, res) => {
+  const { nome, email, senha } = req.body;
 
-  // Verifica se todos os campos foram preenchidos
-  if (!nomeUsuario || !emailUsuario || !senhaUsuario) {
-    return respostaDoServidor
-      .status(400)
-      .json({ mensagem: 'Preencha todos os campos.' });
+  if (!nome || !email || !senha) {
+    return res.status(400).json({ mensagem: 'Preencha todos os campos.' });
   }
 
-  // Conecta ao banco
-  const conexaoBanco = await conectarBanco();
+  const db = await conectarBanco();
 
-  // Insere os dados na tabela
-  await conexaoBanco.run(
-    'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)',
-    [nomeUsuario, emailUsuario, senhaUsuario]
-  );
-
-  // Retorna mensagem de sucesso
-  respostaDoServidor.json({ mensagem: 'Usuário cadastrado com sucesso!' });
+  try {
+    await db.run('INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)', [
+      nome,
+      email,
+      senha
+    ]);
+    res.json({ mensagem: 'Usuário cadastrado com sucesso!' });
+  } catch (erro) {
+    if (erro.message.includes('UNIQUE')) {
+      res.status(400).json({ mensagem: 'E-mail já cadastrado.' });
+    } else {
+      console.error(erro);
+      res.status(500).json({ mensagem: 'Erro ao cadastrar usuário.' });
+    }
+  }
 });
 
-// Inicia o servidor na porta 3000
+// // 🟦 Rota para login
+// servidor.post('/login', async (req, res) => {
+//   const { email, senha } = req.body;
+
+//   if (!email || !senha) {
+//     return res.status(400).json({ sucesso: false, mensagem: 'Preencha todos os campos.' });
+//   }
+
+//   const db = await conectarBanco();
+//   const usuario = await db.get('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
+
+//   if (usuario) {
+//     // Retorna também o nome e o e-mail do usuário
+//     res.json({
+//       sucesso: true,
+//       mensagem: 'Login bem-sucedido!',
+//       nome: usuario.nome,
+//       email: usuario.email
+//     });
+//   } else {
+//     res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha incorretos.' });
+//   }
+// });
+
+
+// Inicia o servidor
 servidor.listen(3000, () => {
   console.log('🚀 Servidor rodando em http://localhost:3000');
 });
