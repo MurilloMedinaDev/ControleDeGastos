@@ -22,4 +22,48 @@ async function adicionarColunaSaldo() {
   await db.close();
 }
 
-adicionarColunaSaldo();
+// exemplo de uso
+// adicionarColunaSaldo();
+
+
+async function atualizarSaldoUsuario(id, novoSaldo) {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    // Atualiza o campo "saldo" de um usuário com base no ID
+    await db.run('UPDATE usuario SET saldo = ? WHERE ID_usuario = ?', [novoSaldo, id]);
+    console.log(`Saldo do usuário com ID ${id} atualizado para ${novoSaldo}.`);
+  } catch (erro) {
+    console.error('Erro ao atualizar o saldo do usuário:', erro);
+  } finally {
+    await db.close();
+  }
+}
+
+// // Exemplo de uso
+//atualizarSaldoUsuario(4, 199.99);
+
+
+async function atualizarNomeUsuario(id, novoNome) {
+    const db = await open({
+      filename: './banco.db',
+      driver: sqlite3.Database
+    });
+  
+    try {
+      // Atualiza o campo "saldo" de um usuário com base no ID
+      await db.run('UPDATE usuario SET nome = ? WHERE ID_usuario = ?', [novoNome, id]);
+      console.log(`Nome do usuário com ID ${id} atualizado para ${novoNome}.`);
+    } catch (erro) {
+      console.error('Erro ao atualizar o nome do usuário:', erro);
+    } finally {
+      await db.close();
+    }
+  }
+  
+//   // Exemplo de uso
+//   atualizarNomeUsuario(1,'Murillo');
+  
