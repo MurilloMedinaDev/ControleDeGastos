@@ -36,6 +36,8 @@ botaoEntrar.addEventListener('click', async () => {
       // Salva nome e email no localStorage
   
       localStorage.setItem('usuarioEmail', dados.email);
+      localStorage.setItem('usuarioNome', dados.nome);
+
     
       // Redireciona para o dashboard
       window.location.href = '/ControleDeGastos/HTML/dashBoard.html';

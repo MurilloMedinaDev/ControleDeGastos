@@ -28,7 +28,7 @@ async function conectarBanco() {
   return conexaoBanco;
 }
 
-// 🟩 Rota para cadastrar usuário
+//  Rota para cadastrar usuário
 servidor.post('/cadastrar', async (req, res) => {
   const { nome, email, senha } = req.body;
 
@@ -55,32 +55,56 @@ servidor.post('/cadastrar', async (req, res) => {
   }
 });
 
-// // 🟦 Rota para login
-// servidor.post('/login', async (req, res) => {
-//   const { email, senha } = req.body;
+//  Rota para login
+servidor.post('/login', async (req, res) => {
+  const { email, senha } = req.body;
 
-//   if (!email || !senha) {
-//     return res.status(400).json({ sucesso: false, mensagem: 'Preencha todos os campos.' });
-//   }
+  if (!email || !senha) {
+    return res.status(400).json({ sucesso: false, mensagem: 'Preencha todos os campos.' });
+  }
 
-//   const db = await conectarBanco();
-//   const usuario = await db.get('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
+  const db = await conectarBanco();
+  const usuario = await db.get('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
 
-//   if (usuario) {
-//     // Retorna também o nome e o e-mail do usuário
-//     res.json({
-//       sucesso: true,
-//       mensagem: 'Login bem-sucedido!',
-//       nome: usuario.nome,
-//       email: usuario.email
-//     });
-//   } else {
-//     res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha incorretos.' });
-//   }
-// });
+  if (usuario) {
+    // Retorna também o nome e o e-mail do usuário
+    res.json({
+      sucesso: true,
+      mensagem: 'Login bem-sucedido!',
+      nome: usuario.nome,
+      email: usuario.email
+    });
+  } else {
+    res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha incorretos.' });
+  }
+});
+
+// Rota para buscar dados do usuário pelo e-mail
+servidor.get('/usuario/:email', async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const db = await conectarBanco();
+    const usuario = await db.get('SELECT nome, email FROM usuario WHERE email = ?', [email]);
+
+    if (usuario) {
+      res.json(usuario);
+    } else {
+      res.status(404).json({ mensagem: 'Usuário não encontrado.' });
+    }
+  } catch (erro) {
+    console.error('Erro ao buscar usuário:', erro);
+    res.status(500).json({ mensagem: 'Erro interno do servidor.' });
+  }
+});
+
+
+
+
+
 
 
 // Inicia o servidor
 servidor.listen(3000, () => {
-  console.log('🚀 Servidor rodando em http://localhost:3000');
+  console.log(' Servidor rodando em http://localhost:3000');
 });
