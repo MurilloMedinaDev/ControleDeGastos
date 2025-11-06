@@ -37,6 +37,7 @@ botaoEntrar.addEventListener('click', async () => {
   
       localStorage.setItem('usuarioEmail', dados.email);
       localStorage.setItem('usuarioNome', dados.nome);
+      
 
     
       // Redireciona para o dashboard

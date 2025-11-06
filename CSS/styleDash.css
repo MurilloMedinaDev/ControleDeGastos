@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');   
+
 
 * {
   margin: 0;
@@ -8,9 +10,8 @@
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #303030 0%, #000 100%);
   font-family: 'Poppins', sans-serif;
-  color: #d1d1d1;
+  color: #000000;
 }
 
 /* ===== BOTÃO MENU ===== */
@@ -31,7 +32,7 @@ body {
 }
 
 .btn-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background-color: rgba(34, 3, 114, 0.625);
   transform: scale(1.1);
 }
 
@@ -42,7 +43,7 @@ body {
   left: 0;
   width: 65px;
   height: 100vh;
-  background: rgba(20, 20, 20, 0.8);
+  background-color: rgb(27, 2, 90);
   border-right: 1px solid rgba(255, 255, 255, 0);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   color: white;
@@ -106,9 +107,14 @@ body {
 
 h1 {
   font-size: 32px;
-  color: #ffffff;
+  color: rgb(72, 0, 255);
+
+  font-family: "Momo Trust Display", sans-serif;
+  font-weight: 400;
+  font-style: normal;  
+
   margin-bottom: 30px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.275);
 }
 
 /* ===== CAIXAS ===== */
@@ -121,10 +127,10 @@ h1 {
 
 /* ===== CONTAINERS ===== */
 .container {
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+ 
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.237);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,7 +161,7 @@ h1 {
 }
 
 #nomeBD, #emailBD {
-  color: #bdbdbd;
+  color: #000000;
   font-weight: 500;
 }
 
@@ -169,16 +175,14 @@ h1 {
 
 #listCategorias {
   font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 15px;
-
+  color: #000000;
 }
 
 .barras-wrapper {
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  margin-top: 10px;
+
   width: 30vw;
 
   
@@ -193,10 +197,11 @@ h1 {
 
 .barra-container {
   width: 100%;
-  background-color: #222;
+  background-color: #00000017;
+
   border-radius: 30px;
   overflow: hidden;
-  height: 40px;
+  height: 5vh;
   }
 
 .barra {
@@ -233,20 +238,27 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .container-ValorEntrada .container {
-  color: #4ee68a;
+  color: #010101;
+  background-color: #4ee68a;
+ 
+
 }
 
 .container-ValorSaida .container {
-  color: #ff5c5c;
+  color: #000000;
+  background-color: #ff5c5c;
 }
 
 /* ===== MOVIMENTAÇÕES (ABAIXO DE ENTRADA E SAÍDA) ===== */
 .container-Movimentacao {
   width: 24vw;
-  margin-top: -270px;
+  margin-top: -30vh;
+  margin-left: auto;
+  
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 10px;
@@ -275,7 +287,7 @@ h1 {
 
 .container-Movimentacao  .containerVerMais{
   height: 8.5vh;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.261);
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -288,60 +300,6 @@ h1 {
   background-color: #ff4242;
   color: #ffffff;
 
-}
-
-/* ===== GRÁFICO PIZZA ===== */
-.container-GraficoPizza .container {
-  flex-direction: column;
-  width: 23vw;
-  height: 38vh;
-}
-
-.grafico-pizza {
- width: 100%;
-  max-width: 400px;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pizza {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: conic-gradient(
-    #ff3d3d 0% 20%,
-    #2196f3 20% 30%,
-    #ffa726 30% 40%,
-    #ab47bc 40% 55%,
-    #66bb6a 55% 70%,
-    #78909c 70% 100%
-  );
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
-}
-
-.legenda {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  font-size: 13px;
-}
-
-.legenda .cor {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 5px;
-}
-
-/* ===== DETALHES ===== */
-.container-Detalhes .container,
-.container-Detalhes2 .container {
-  width: 18.5vw;
-  height: 38vh;
 }
 
 /* Telas menores: reduz um pouco o tamanho */

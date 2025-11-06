@@ -73,6 +73,8 @@ servidor.post('/login', async (req, res) => {
       mensagem: 'Login bem-sucedido!',
       nome: usuario.nome,
       email: usuario.email
+
+      
     });
   } else {
     res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha incorretos.' });
@@ -85,7 +87,7 @@ servidor.get('/usuario/:email', async (req, res) => {
 
   try {
     const db = await conectarBanco();
-    const usuario = await db.get('SELECT nome, email FROM usuario WHERE email = ?', [email]);
+    const usuario = await db.get('SELECT nome,ID_usuario,Saldo,email FROM usuario WHERE email = ?', [email]);
 
     if (usuario) {
       res.json(usuario);
@@ -97,10 +99,6 @@ servidor.get('/usuario/:email', async (req, res) => {
     res.status(500).json({ mensagem: 'Erro interno do servidor.' });
   }
 });
-
-
-
-
 
 
 
