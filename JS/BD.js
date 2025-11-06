@@ -34,8 +34,8 @@ async function atualizarSaldoUsuario(id, novoSaldo) {
 
   try {
     // Atualiza o campo "saldo" de um usuário com base no ID
-    await db.run('UPDATE usuario SET saldo = ? WHERE ID_usuario = ?', [novoSaldo, id]);
-    console.log(`Saldo do usuário com ID ${id} atualizado para ${novoSaldo}.`);
+    await db.run('UPDATE entrada SET ID_Categoria = ? WHERE ID_usuario = ?', [ID_categoria, id]);
+    console.log(`ID_categoria do usuário com ID ${id} atualizado para ${ID_categoria}.`);
   } catch (erro) {
     console.error('Erro ao atualizar o saldo do usuário:', erro);
   } finally {
@@ -44,7 +44,7 @@ async function atualizarSaldoUsuario(id, novoSaldo) {
 }
 
 // // Exemplo de uso
-//atualizarSaldoUsuario(4, 199.99);
+atualizarSaldoUsuario(5, 1);
 
 
 async function atualizarNomeUsuario(id, novoNome) {
