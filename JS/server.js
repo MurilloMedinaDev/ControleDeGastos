@@ -87,7 +87,7 @@ servidor.get('/usuario/:email', async (req, res) => {
 
   try {
     const db = await conectarBanco();
-    const usuario = await db.get('SELECT nome,ID_usuario,Saldo,email FROM usuario WHERE email = ?', [email]);
+    const usuario = await db.get('SELECT nome,ID_usuario,Saldo,email,totalEntrada,totalSaida FROM usuario WHERE email = ?', [email]);
 
     if (usuario) {
       res.json(usuario);
@@ -99,6 +99,76 @@ servidor.get('/usuario/:email', async (req, res) => {
     res.status(500).json({ mensagem: 'Erro interno do servidor.' });
   }
 });
+
+
+// Rota entradas doo usuário
+servidor.get('/entrada/:id_usuario', async (req, res) => {
+  const { id_usuario } = req.params;
+
+  try {
+    const db = await conectarBanco();
+    const entradas = await db.all(
+      `SELECT 
+        ID_Entrada, 
+        nome, 
+        valor, 
+        data, 
+        ID_Categoria, 
+        totalEntrada
+      FROM entrada 
+      WHERE ID_usuario = ?`,
+      [id_usuario]
+    );
+
+    if (entradas.length > 0) {
+      res.json(entradas);
+    } else {
+      res.status(404).json({ mensagem: 'Nenhuma entrada encontrada para este usuário.' });
+    }
+  } catch (erro) {
+    console.error('Erro ao buscar entradas:', erro);
+    res.status(500).json({ mensagem: 'Erro interno do servidor.' });
+  }
+});
+
+
+
+//  buscar todas as saidas de um usuário
+servidor.get('/saida/:id_usuario', async (req, res) => {
+  const { id_usuario } = req.params;
+
+  try {
+    const db = await conectarBanco();
+    const entradas = await db.all(
+      `SELECT 
+        ID_Saida, 
+        nome, 
+        valor, 
+        data, 
+        ID_Categoria, 
+        totalEntrada
+      FROM entrada 
+      WHERE ID_usuario = ?`,
+      [id_usuario]
+    );
+
+    if (entradas.length > 0) {
+      res.json(entradas);
+    } else {
+      res.status(404).json({ mensagem: 'Nenhuma entrada encontrada para este usuário.' });
+    }
+  } catch (erro) {
+    console.error('Erro ao buscar entradas:', erro);
+    res.status(500).json({ mensagem: 'Erro interno do servidor.' });
+  }
+});
+
+
+
+
+
+
+
 
 
 

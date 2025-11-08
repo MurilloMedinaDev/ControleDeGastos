@@ -149,7 +149,7 @@ h1 {
 
 .container-perfil .container {
   width: 18vw;
-  height: 30vh;
+  height: 40vh;
   flex-direction: column;
   text-align: center;
  
@@ -218,19 +218,6 @@ h1 {
   transition: width 0.5s ease;
 }
 
-/* ===== CORES BARRAS ===== */
-.barra1 { background: linear-gradient(90deg, #4800ff,  #8809e2); }
-.barra2 { background: linear-gradient(90deg, #4800ff,  #8809e2); }
-.barra3 { background: linear-gradient(90deg, #4800ff,  #8809e2); }
-.barra4 { background: linear-gradient(90deg, #4800ff,  #8809e2);}
-.barra5 { background: linear-gradient(90deg, #4800ff,  #8809e2);}
-.barra6 { background: linear-gradient(90deg, #4800ff,  #8809e2);}
-.barra7 { background: linear-gradient(90deg, #4800ff,  #8809e2);}
-.barra8 { background: linear-gradient(90deg, #4800ff,  #8809e2); }
-.barra9 { background: linear-gradient(90deg, #4800ff,  #8809e2);}
-.barra10{ background: linear-gradient(90deg, #4800ff,  #8809e2);}
-.barra11 {background: linear-gradient(90deg, #4800ff,  #8809e2); }
-.barra12 { background: linear-gradient(90deg, #4800ff,  #8809e2);}
 
 /* ===== ENTRADA / SAÍDA ===== */
 
@@ -294,11 +281,30 @@ gap: 1.5vw;
   height: 10vh;
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 15px;
-  display: flex;
+  font-size: 1vw;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+
+
+  
 }
+
+.dataMovi{
+margin-right: auto;
+
+}
+.categoriaMovi{
+  margin-right: auto;
+}
+.textMovi{
+
+  margin-right: auto;
+}
+
+
+
+
 
 .container-Movimentacao .container:hover {
  
