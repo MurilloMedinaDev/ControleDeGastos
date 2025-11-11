@@ -7,6 +7,8 @@ function toggleSidebar() {
 window.addEventListener('DOMContentLoaded', async () => {
   const nome = localStorage.getItem('usuarioNome');
   const email = localStorage.getItem('usuarioEmail');
+  
+
 
   document.getElementById('nomeBD').textContent = nome || 'Usuário';
   document.getElementById('emailBD').textContent = email || '';
@@ -43,7 +45,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
     
-      entradas.slice(0, containers.length).forEach((item, i) => { //Pegue só as primeiras X entradas, onde X é a quantidade de containers que existem no HTML
+      entradas.slice(-5).reverse().forEach((item, i) => { //Pegue só as primeiras X entradas, onde X é a quantidade de containers que existem no HTML
         const container = containers[i];
 
         const data = container.querySelector('.dataMovi');

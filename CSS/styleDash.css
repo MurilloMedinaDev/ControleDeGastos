@@ -231,7 +231,7 @@ gap: 1.5vw;
 .container-ValorSaida .container,.container-Detalhes .container {
   width: 10.1vw;
   height: 18vh;
-  font-size: 3.5vh;
+  font-size: 2.4vh;
   font-weight: 600;
   
  
@@ -244,10 +244,12 @@ gap: 1.5vw;
   
 
 }
-#textDetalhes{
-  font-size: 2vh;
-
+#textDetalhes #textSaida #textEntrada{
+  font-size: 20vh;
 }
+
+
+
 
 .container-ValorEntrada .container {
   color: #015020;
@@ -264,7 +266,7 @@ gap: 1.5vw;
 /* ===== MOVIMENTAÇÕES (ABAIXO DE ENTRADA E SAÍDA) ===== */
 .container-Movimentacao {
   width: 34vw;
- margin-top: -14vh;
+ margin-top: -24vh;
   margin-left:  20%;
   
   border: 1px solid rgba(255, 255, 255, 0.08);

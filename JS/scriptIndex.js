@@ -28,6 +28,7 @@ botaoEntrar.addEventListener('click', async () => {
 
     // Lê a resposta do servidor e transforma em objeto JavaScript
     const dados = await resposta.json();
+    console.log('Dados recebidos do servidor:', dados);
 
     // Caso o servidor diga que o login foi bem-sucedido
     if (dados.sucesso) {
@@ -37,10 +38,12 @@ botaoEntrar.addEventListener('click', async () => {
   
       localStorage.setItem('usuarioEmail', dados.email);
       localStorage.setItem('usuarioNome', dados.nome);
+      localStorage.setItem('ID_usuario', dados.ID_usuario); 
+
       
 
     
-      // Redireciona para o dashboard
+     
       window.location.href = '/ControleDeGastos/HTML/dashBoard.html';
     }
 

@@ -223,6 +223,88 @@ async function atualizarNomeUsuario(id, novoNome) {
   }
 
 //   // Exemplo de uso
-  atualizarValorTotalSaida(1,900);
+//  atualizarValorTotalSaida(1,900);
 
 
+
+async function apagarColunaEntrada(totalEntrada) {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    await db.run('ALTER TABLE entrada DROP COLUMN totalEntrada');
+    console.log('Coluna totalEntrada excluída da tabela entrada.');
+  } catch (erro) {
+    console.error('Erro ao apagar coluna:', erro);
+  } finally {
+    await db.close();
+  }
+}
+
+
+//teste
+//apagarColunaEntrada();
+
+async function apagarColunaSaida(totalSaida) {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    await db.run('ALTER TABLE saida DROP COLUMN totalSaida');
+    console.log('Coluna totalSaida excluída da tabela Saida.');
+  } catch (erro) {
+    console.error('Erro ao apagar coluna:', erro);
+  } finally {
+    await db.close();
+  }
+}
+
+
+//teste
+//apagarColunaSaida();
+
+
+async function adicionarCategoria(nome) {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    // Adicionar Nova categoria
+    await db.run('INSERT INTO categoria (nome) VALUES (?)', [nome]);
+    console.log(`Nova categoria ${nome} adicionada para.`);
+  } catch (erro) {
+    console.error('Erro ao adicionar categoria:', erro);
+  } finally {
+    await db.close();
+  }
+}
+
+// // Exemplo de uso
+//adicionarCategoria('Outros');
+
+ 
+async function apagarCategoria(ID_Categoria) {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    // Apaga a categoria com base no ID
+    await db.run('DELETE FROM categoria WHERE ID_Categoria = ?', [ID_Categoria]);
+    console.log(`Linha com ID ${ID_Categoria} excluída da tabela categoria.`);
+  } catch (erro) {
+    console.error('Erro ao apagar categoria:', erro.message);
+  } finally {
+    await db.close();
+  }
+}
+
+// // Exemplo de uso
+// apagarCategoria(6);

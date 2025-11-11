@@ -67,12 +67,16 @@ servidor.post('/login', async (req, res) => {
   const usuario = await db.get('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
 
   if (usuario) {
+
+ 
     // Retorna também o nome e o e-mail do usuário
     res.json({
       sucesso: true,
       mensagem: 'Login bem-sucedido!',
       nome: usuario.nome,
-      email: usuario.email
+      email: usuario.email,
+      ID_usuario: usuario.ID_usuario
+      
 
       
     });
@@ -101,7 +105,7 @@ servidor.get('/usuario/:email', async (req, res) => {
 });
 
 
-// Rota entradas doo usuário
+// Rota entradas do usuário
 servidor.get('/entrada/:id_usuario', async (req, res) => {
   const { id_usuario } = req.params;
 
@@ -113,8 +117,7 @@ servidor.get('/entrada/:id_usuario', async (req, res) => {
         nome, 
         valor, 
         data, 
-        ID_Categoria, 
-        totalEntrada
+        ID_Categoria
       FROM entrada 
       WHERE ID_usuario = ?`,
       [id_usuario]
@@ -145,8 +148,7 @@ servidor.get('/saida/:id_usuario', async (req, res) => {
         nome, 
         valor, 
         data, 
-        ID_Categoria, 
-        totalEntrada
+        ID_Categoria
       FROM entrada 
       WHERE ID_usuario = ?`,
       [id_usuario]
@@ -163,6 +165,26 @@ servidor.get('/saida/:id_usuario', async (req, res) => {
   }
 });
 
+
+
+//  Rota para cadastrar Entrada  Rota para cadastrar Entrada
+servidor.post('/entrada', async (req, res) => {
+  const { nome, valor, data, ID_Categoria,ID_usuario} = req.body;
+
+  const db = await conectarBanco();
+
+  try {
+    await db.run(
+      'INSERT INTO entrada (nome, valor, data, ID_Categoria, ID_usuario) VALUES (?, ?, ?, ?,?)',
+      [nome, valor, data, ID_Categoria,ID_usuario]
+    );
+
+    res.json({ mensagem: 'Entrada cadastrada com sucesso!' });
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ mensagem: 'Erro ao cadastrar entrada.' });
+  }
+});
 
 
 
