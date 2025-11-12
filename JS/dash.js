@@ -68,6 +68,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       console.error('Erro ao buscar dados do usuário ou entradas:', erro);
     }
   }
+
+
+  
 });
 
 

@@ -142,25 +142,25 @@ servidor.get('/saida/:id_usuario', async (req, res) => {
 
   try {
     const db = await conectarBanco();
-    const entradas = await db.all(
+    const saidas = await db.all(
       `SELECT 
         ID_Saida, 
         nome, 
         valor, 
         data, 
         ID_Categoria
-      FROM entrada 
+      FROM saida
       WHERE ID_usuario = ?`,
       [id_usuario]
     );
 
-    if (entradas.length > 0) {
-      res.json(entradas);
+    if (saidas.length > 0) {
+      res.json(saidas);
     } else {
-      res.status(404).json({ mensagem: 'Nenhuma entrada encontrada para este usuário.' });
+      res.status(404).json({ mensagem: 'Nenhuma saida encontrada para este usuário.' });
     }
   } catch (erro) {
-    console.error('Erro ao buscar entradas:', erro);
+    console.error('Erro ao buscar saidas:', erro);
     res.status(500).json({ mensagem: 'Erro interno do servidor.' });
   }
 });
@@ -185,6 +185,31 @@ servidor.post('/entrada', async (req, res) => {
     res.status(500).json({ mensagem: 'Erro ao cadastrar entrada.' });
   }
 });
+
+
+
+
+//  Rota para cadastrar Saida
+servidor.post('/saida', async (req, res) => {
+  const { nome, valor, data, qntParcela, unParcela,ID_Categoria, ID_usuario } = req.body;
+
+
+  const db = await conectarBanco();
+
+  try {
+    await db.run(
+      'INSERT INTO saida (nome, valor, data, qntParcela, unParcela, ID_Categoria,ID_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [nome, valor, data, qntParcela, unParcela,ID_Categoria, ID_usuario,]
+    );
+
+    res.json({ mensagem: 'Saida cadastrada com sucesso!' });
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ mensagem: 'Erro ao cadastrar Saida.' });
+  }
+});
+
+
 
 
 

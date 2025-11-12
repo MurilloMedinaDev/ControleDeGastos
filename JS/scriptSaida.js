@@ -4,3 +4,44 @@ window.location.href = "dashBoard.html"
 
 
 })
+
+
+document.getElementById('novaSaidaBtn').addEventListener('click', async() =>{
+
+    const nome = document.getElementById('nomeSaida').value.trim();
+    const valor = document.getElementById('valorSaida').value.trim();
+    const data = document.getElementById('dataSaida').value.trim();
+    const ID_Categoria = document.getElementById('categoriaSaida').value.trim();
+    const unParcela = document.getElementById('parcelaAtual').value.trim();
+    const qntParcela = document.getElementById('totalParcelas').value.trim();
+
+
+    const ID_usuario = localStorage.getItem('ID_usuario');
+
+
+    if (!nome || !valor|| !data || !ID_Categoria){
+        alert('Preencha todos os campos!');
+        return;
+      }
+
+
+      
+      try {
+    
+      console.log("DEBUG → Dados que serão enviados:");
+
+    const resposta = await fetch('http://localhost:3000/saida', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, valor, data, qntParcela,unParcela, ID_usuario, ID_Categoria})
+    });
+
+    const dados = await resposta.json();
+    alert(dados.mensagem);
+  } catch (erro) {
+    console.error('Erro:', erro);
+    alert('Erro ao conectar ao servidor.');
+  }
+});
+
+

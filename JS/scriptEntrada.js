@@ -3,7 +3,7 @@ window.location.href = "dashBoard.html"
 
 })
 
-document.getElementById('novoGastosBtn').addEventListener('click', async() =>{
+document.getElementById('novaEntradaBtn').addEventListener('click', async() =>{
 
     const nome = document.getElementById('nomeEntrada').value.trim();
     const valor = document.getElementById('valorEntrada').value.trim();
