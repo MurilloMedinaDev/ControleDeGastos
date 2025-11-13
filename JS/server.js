@@ -8,27 +8,59 @@ const servidor = express();
 servidor.use(cors());
 servidor.use(express.json());
 
-// Função para conectar ao banco e criar tabela se não existir
+// Função para conectar ao banco
 async function conectarBanco() {
   const conexaoBanco = await open({
     filename: './banco.db',
     driver: sqlite3.Database
   });
 
-  // Cria a tabela "usuario" se não existir
+  // TABELA USUÁRIO 
   await conexaoBanco.exec(`
     CREATE TABLE IF NOT EXISTS usuario (
       ID_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT,
       email TEXT UNIQUE,
-      senha TEXT
+      senha TEXT,
+      saldo REAL DEFAULT 0.00,
+      totalEntrada REAL DEFAULT 0.00,
+      totalSaida REAL DEFAULT 0.00
+    )
+  `);
+
+  // TABELA CATEGORIA 
+  await conexaoBanco.exec(`
+    CREATE TABLE IF NOT EXISTS categoria (
+      ID_Categoria INTEGER PRIMARY KEY AUTOINCREMENT,
+      nome TEXT
+    )
+  `);
+
+  //  TABELA MOVIMENTAÇÃO 
+  await conexaoBanco.exec(`
+    CREATE TABLE IF NOT EXISTS movimentacao (
+      ID_Movimentacao INTEGER PRIMARY KEY AUTOINCREMENT,
+      nome TEXT NOT NULL,
+      valor REAL NOT NULL,
+      data DATE NOT NULL,
+      qntParcela INTEGER,
+      unParcela INTEGER,
+      ID_usuario INTEGER,
+      ID_Categoria INTEGER,
+      ID_tipoMovi INTEGER NOT NULL, -- 1 = entrada / 2 = saída
+      FOREIGN KEY (ID_usuario) REFERENCES usuario (ID_usuario),
+      FOREIGN KEY (ID_Categoria) REFERENCES categoria (ID_Categoria)
     )
   `);
 
   return conexaoBanco;
 }
 
-//  Rota para cadastrar usuário
+
+// ROTAS DE USUÁRIO
+
+
+// Cadastrar usuário
 servidor.post('/cadastrar', async (req, res) => {
   const { nome, email, senha } = req.body;
 
@@ -55,7 +87,7 @@ servidor.post('/cadastrar', async (req, res) => {
   }
 });
 
-//  Rota para login
+// Login
 servidor.post('/login', async (req, res) => {
   const { email, senha } = req.body;
 
@@ -67,31 +99,28 @@ servidor.post('/login', async (req, res) => {
   const usuario = await db.get('SELECT * FROM usuario WHERE email = ? AND senha = ?', [email, senha]);
 
   if (usuario) {
-
- 
-    // Retorna também o nome e o e-mail do usuário
     res.json({
       sucesso: true,
       mensagem: 'Login bem-sucedido!',
       nome: usuario.nome,
       email: usuario.email,
       ID_usuario: usuario.ID_usuario
-      
-
-      
     });
   } else {
     res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha incorretos.' });
   }
 });
 
-// Rota para buscar dados do usuário pelo e-mail
+// Buscar dados do usuário
 servidor.get('/usuario/:email', async (req, res) => {
   const { email } = req.params;
 
   try {
     const db = await conectarBanco();
-    const usuario = await db.get('SELECT nome,ID_usuario,Saldo,email,totalEntrada,totalSaida FROM usuario WHERE email = ?', [email]);
+    const usuario = await db.get(
+      'SELECT nome, ID_usuario, saldo, email, totalEntrada, totalSaida FROM usuario WHERE email = ?',
+      [email]
+    );
 
     if (usuario) {
       res.json(usuario);
@@ -105,12 +134,10 @@ servidor.get('/usuario/:email', async (req, res) => {
 });
 
 
+// ROTAS DE MOVIMENTAÇÕES
 
 
-
-
-
-// ===== Rota unificada para buscar todas as movimentações de um usuário =====
+// Buscar todas as movimentações do usuário
 servidor.get('/movimentacoes/:id_usuario', async (req, res) => {
   const { id_usuario } = req.params;
 
@@ -132,26 +159,14 @@ servidor.get('/movimentacoes/:id_usuario', async (req, res) => {
       [id_usuario]
     );
 
-    // Mesmo que não tenha registros, retorna um array vazio
     res.json(movs);
-
   } catch (erro) {
     console.error('Erro ao buscar movimentações:', erro);
     res.status(500).json({ mensagem: 'Erro interno do servidor.' });
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-// ===== Rota para cadastrar Entrada =====
+// Cadastrar entrada
 servidor.post('/entrada', async (req, res) => {
   const { nome, valor, data, ID_Categoria, ID_usuario } = req.body;
   const db = await conectarBanco();
@@ -161,7 +176,7 @@ servidor.post('/entrada', async (req, res) => {
       `INSERT INTO movimentacao 
         (nome, valor, data, ID_Categoria, ID_usuario, ID_tipoMovi) 
        VALUES (?, ?, ?, ?, ?, ?)`,
-      [nome, valor, data, ID_Categoria, ID_usuario, 1] // 1 = Entrada
+      [nome, valor, data, ID_Categoria, ID_usuario, 1]
     );
 
     res.json({ mensagem: 'Entrada cadastrada com sucesso!' });
@@ -173,8 +188,7 @@ servidor.post('/entrada', async (req, res) => {
   }
 });
 
-
-// ===== Rota para cadastrar Saída =====
+// Cadastrar saída
 servidor.post('/saida', async (req, res) => {
   const { nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario } = req.body;
   const db = await conectarBanco();
@@ -184,7 +198,7 @@ servidor.post('/saida', async (req, res) => {
       `INSERT INTO movimentacao 
         (nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario, ID_tipoMovi)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario, 2] // 2 = Saída
+      [nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario, 2]
     );
 
     res.json({ mensagem: 'Saída cadastrada com sucesso!' });
@@ -197,17 +211,10 @@ servidor.post('/saida', async (req, res) => {
 });
 
 
+// INICIALIZAÇÃO DO SERVIDOR
 
 
-
-
-
-
-
-
-
-
-// Inicia o servidor
-servidor.listen(3000, () => {
-  console.log(' Servidor rodando em http://localhost:3000');
+servidor.listen(3000, async () => {
+  const db = await conectarBanco();
+  console.log('Servidor rodando em http://localhost:3000');
 });
