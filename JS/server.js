@@ -105,109 +105,97 @@ servidor.get('/usuario/:email', async (req, res) => {
 });
 
 
-// Rota entradas do usuário
-servidor.get('/entrada/:id_usuario', async (req, res) => {
+
+
+
+
+
+// ===== Rota unificada para buscar todas as movimentações de um usuário =====
+servidor.get('/movimentacoes/:id_usuario', async (req, res) => {
   const { id_usuario } = req.params;
 
   try {
     const db = await conectarBanco();
-    const entradas = await db.all(
+    const movs = await db.all(
       `SELECT 
-        ID_Entrada, 
-        nome, 
-        valor, 
-        data, 
-        ID_Categoria
-      FROM entrada 
-      WHERE ID_usuario = ?`,
+        ID_Movimentacao,
+        nome,
+        valor,
+        data,
+        ID_Categoria,
+        ID_tipoMovi,
+        qntParcela,
+        unParcela
+      FROM movimentacao
+      WHERE ID_usuario = ?
+      ORDER BY data DESC`,
       [id_usuario]
     );
 
-    if (entradas.length > 0) {
-      res.json(entradas);
-    } else {
-      res.status(404).json({ mensagem: 'Nenhuma entrada encontrada para este usuário.' });
-    }
+    // Mesmo que não tenha registros, retorna um array vazio
+    res.json(movs);
+
   } catch (erro) {
-    console.error('Erro ao buscar entradas:', erro);
+    console.error('Erro ao buscar movimentações:', erro);
     res.status(500).json({ mensagem: 'Erro interno do servidor.' });
   }
 });
 
 
 
-//  buscar todas as saidas de um usuário
-servidor.get('/saida/:id_usuario', async (req, res) => {
-  const { id_usuario } = req.params;
-
-  try {
-    const db = await conectarBanco();
-    const saidas = await db.all(
-      `SELECT 
-        ID_Saida, 
-        nome, 
-        valor, 
-        data, 
-        ID_Categoria
-      FROM saida
-      WHERE ID_usuario = ?`,
-      [id_usuario]
-    );
-
-    if (saidas.length > 0) {
-      res.json(saidas);
-    } else {
-      res.status(404).json({ mensagem: 'Nenhuma saida encontrada para este usuário.' });
-    }
-  } catch (erro) {
-    console.error('Erro ao buscar saidas:', erro);
-    res.status(500).json({ mensagem: 'Erro interno do servidor.' });
-  }
-});
 
 
 
-//  Rota para cadastrar Entrada  Rota para cadastrar Entrada
+
+
+
+
+
+// ===== Rota para cadastrar Entrada =====
 servidor.post('/entrada', async (req, res) => {
-  const { nome, valor, data, ID_Categoria,ID_usuario} = req.body;
-
+  const { nome, valor, data, ID_Categoria, ID_usuario } = req.body;
   const db = await conectarBanco();
 
   try {
     await db.run(
-      'INSERT INTO entrada (nome, valor, data, ID_Categoria, ID_usuario) VALUES (?, ?, ?, ?,?)',
-      [nome, valor, data, ID_Categoria,ID_usuario]
+      `INSERT INTO movimentacao 
+        (nome, valor, data, ID_Categoria, ID_usuario, ID_tipoMovi) 
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [nome, valor, data, ID_Categoria, ID_usuario, 1] // 1 = Entrada
     );
 
     res.json({ mensagem: 'Entrada cadastrada com sucesso!' });
   } catch (erro) {
     console.error(erro);
     res.status(500).json({ mensagem: 'Erro ao cadastrar entrada.' });
+  } finally {
+    await db.close();
   }
 });
 
 
-
-
-//  Rota para cadastrar Saida
+// ===== Rota para cadastrar Saída =====
 servidor.post('/saida', async (req, res) => {
-  const { nome, valor, data, qntParcela, unParcela,ID_Categoria, ID_usuario } = req.body;
-
-
+  const { nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario } = req.body;
   const db = await conectarBanco();
 
   try {
     await db.run(
-      'INSERT INTO saida (nome, valor, data, qntParcela, unParcela, ID_Categoria,ID_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [nome, valor, data, qntParcela, unParcela,ID_Categoria, ID_usuario,]
+      `INSERT INTO movimentacao 
+        (nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario, ID_tipoMovi)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [nome, valor, data, qntParcela, unParcela, ID_Categoria, ID_usuario, 2] // 2 = Saída
     );
 
-    res.json({ mensagem: 'Saida cadastrada com sucesso!' });
+    res.json({ mensagem: 'Saída cadastrada com sucesso!' });
   } catch (erro) {
     console.error(erro);
-    res.status(500).json({ mensagem: 'Erro ao cadastrar Saida.' });
+    res.status(500).json({ mensagem: 'Erro ao cadastrar saída.' });
+  } finally {
+    await db.close();
   }
 });
+
 
 
 

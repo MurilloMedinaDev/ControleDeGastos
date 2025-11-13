@@ -306,5 +306,39 @@ async function apagarCategoria(ID_Categoria) {
   }
 }
 
-// // Exemplo de uso
+
 // apagarCategoria(6);
+
+
+async function criarTabelaMovimentacao() {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    await db.run(`
+      CREATE TABLE IF NOT EXISTS movimentacao (
+        ID_Movimentacao INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        valor REAL NOT NULL,
+        data DATE NOT NULL,
+        qntParcela INTEGER,
+        unParcela INTEGER,
+        ID_usuario INTEGER,
+        ID_Categoria INTEGER,
+        ID_tipoMovi INTEGER NOT NULL, 
+        FOREIGN KEY (ID_usuario) REFERENCES usuario (ID_usuario),
+        FOREIGN KEY (ID_Categoria) REFERENCES categoria (ID_Categoria)
+      )
+    `);
+
+    console.log('Tabela "movimentacao" criada com sucesso.');
+  } catch (erro) {
+    console.error('Erro ao criar tabela movimentacao:', erro);
+  } finally {
+    await db.close();
+  }
+}
+
+//criarTabelaMovimentacao();

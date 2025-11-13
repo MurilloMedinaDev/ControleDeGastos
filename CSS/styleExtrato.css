@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Fundo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+}
+
+/* Container principal que envolve todas as movimentações */
+.container-Movimentacao {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os containers */
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Cada movimentação individual */
+.container {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+/* Efeito hover nos containers */
+.container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Estilização dos textos */
+.dataMovi {
+    font-size: 14px;
+    color: #888;
+}
+
+.categoriaMovi {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.textMovi {
+    font-size: 16px;
+    color: #333;
+    flex: 1;
+    text-align: center;
+}
+
+.valorMovi {
+    font-size: 16px;
+    font-weight: bold;
+    color: green; /* Para entradas */
+}
+
+/* Se quiser diferenciar saídas, pode usar uma classe adicional tipo .saidaMovi e colocar color: red; */
