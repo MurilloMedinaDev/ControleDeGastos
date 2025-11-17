@@ -1,120 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');   
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Corpo */
+/* ===== BODY ===== */
 body {
+  background-color: #f4f7fa;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
- 
-  font-family: "Momo Trust Display", sans-serif;
-  font-weight: 400;
-  font-style: normal;  
-
-  color: rgb(0, 0, 0);
-  background-color: #49494930;
 }
 
-/* Container principal */
-main {
-  background-color: rgb(247, 247, 247);
-  padding: 40px 30px;
-  border-radius: 8px;
-  
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.388);
-  width: 100%;
-  max-width: 340px;
-  text-align: center;
-}
-
-/* Título */
-#titulo {
-  font-size: 28px;
-  margin-bottom: 25px;
-  color: rgb(72, 0, 255);
-  
-}
-
+/* ===== TÍTULO PRINCIPAL ===== */
 #tituloP {
-  position: absolute; 
-  top: 5vh;         
-  left: 50%;        
-  transform: translateX(-50%); 
-  font-size: 25px;
-  color: rgb(72, 0, 255);
-  margin: 0;
-  z-index: 100; 
-  text-shadow: 2px 2px 5px rgba(36, 17, 17, 0.318);      
+  margin-top: 40px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00856f;
 }
-/* Campos de entrada */
+
+/* ===== CARD DE CADASTRO ===== */
+main {
+  margin-top: 35px;
+  width: 100%;
+  max-width: 450px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+#titulo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* ===== CAMPOS ===== */
 .campos {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 25px;
 }
 
 .campos input {
-  padding: 12px 15px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(42, 42, 42, 0.226);
-  border-radius:8px;
-  color: rgb(0, 0, 0);
-  font-size: 15px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(2px);
-}
-
-.campos input::placeholder {
-  color: rgb(0, 0, 0,0.279)
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f8f9fb;
+  transition: 0.2s;
 }
 
 .campos input:focus {
+  border-color: #00856f;
+  box-shadow: 0 0 6px rgba(0,133,111,0.2);
   outline: none;
-  border-color: rgba(19, 19, 19, 0.092);
-  
 }
 
-/* Botões */
+/* ===== BOTÕES ===== */
 .btnInputs {
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.btnInputs input[type="button"] {
-  width: 100%;
-  padding: 13px;
-  background-color: rgb(72, 0, 255);
-  color: rgb(255, 255, 255);
-  border: 1px solid rgb(119, 119, 119);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+#cadastrarBtn {
+  background-color: #00856f;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: all 0.25s ease;
+  transition: 0.2s;
 }
 
-.btnInputs input[type="button"]:hover {
-
-  border-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+#cadastrarBtn:hover {
+  background-color: #00a88c;
 }
 
-/* Rodapé */
+#voltarBtn {
+  background-color: #eaf7f3;
+  color: #00856f;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#voltarBtn:hover {
+  background-color: #d6f3ec;
+}
+
+.btnInputs input:active {
+  transform: scale(0.97);
+}
+
+/* ===== FOOTER ===== */
 footer {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  color: rgb(66, 66, 66);
+  margin-top: 40px;
+  color: #666;
+  font-size: 0.85rem;
 }

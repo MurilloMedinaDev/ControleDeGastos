@@ -1,71 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* Fundo da página */
+/* ===== Layout Geral ===== */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f2f2f2;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #333;
 }
 
-/* Container principal que envolve todas as movimentações */
-.container-Movimentacao {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espaço entre os containers */
-    width: 90%;
-    max-width: 600px;
-}
-
-/* Cada movimentação individual */
-.container {
-    background-color: #fff;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* ===== Header ===== */
+.header-extrato {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.2s;
+    padding: 15px;
+    background: #ffffff;
+    color: #fff;
 }
 
-/* Efeito hover nos containers */
-.container:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.btn-voltar,
+.btn-filtrar {
+    background-color: #00a88d;
+    border: none;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
 }
 
-/* Estilização dos textos */
+.btn-voltar:hover,
+.btn-filtrar:hover {
+    background: #475569;
+}
+
+/* ===== Lista de Movimentações ===== */
+.container-Movimentacao {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ===== Cartão de Movimentação ===== */
+.container {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr auto;
+    align-items: center;
+}
+
+/* Datas */
 .dataMovi {
     font-size: 14px;
-    color: #888;
+    font-weight: bold;
+    color: #1e293b;
 }
 
+/* Categoria */
 .categoriaMovi {
     font-size: 14px;
-    font-weight: bold;
-    color: #555;
+    color: #475569;
 }
 
+/* Descrição */
 .textMovi {
-    font-size: 16px;
-    color: #333;
-    flex: 1;
-    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
 }
 
+/* Valor */
 .valorMovi {
     font-size: 16px;
     font-weight: bold;
-    color: green; /* Para entradas */
+    text-align: right;
+    color: #0f172a;
 }
 
-/* Se quiser diferenciar saídas, pode usar uma classe adicional tipo .saidaMovi e colocar color: red; */

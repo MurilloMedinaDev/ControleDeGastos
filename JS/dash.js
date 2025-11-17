@@ -1,6 +1,4 @@
-function toggleSidebar() {
-  document.querySelector('.sidebar').classList.toggle('ativa');
-}
+
 
 window.addEventListener('DOMContentLoaded', async () => {
   const nome = localStorage.getItem('usuarioNome');

@@ -1,123 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');   
-   
-   
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-    font-family: "Momo Trust Display", sans-serif;
-    font-weight: 400;
-    font-style: normal;  
-  
-    color: rgb(0, 0, 0);
-    background-color: #49494930;
-  }
+/* ===== BODY ===== */
+body {
+  background-color: #f4f7fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
 
-     
-   
-  main {
-    background-color: rgb(247, 247, 247);
-    padding: 40px 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.388);
-    width: 100%;
-    max-width: 340px;
-    text-align: center;
-  }
-  
-  #titulo {
-    font-size: 28px;
-    margin-bottom: 25px;
-    color: rgb(72, 0, 255);
+/* ===== TÍTULO "CONTROLE RECEITA" ===== */
+#tituloP {
+  margin-top: 40px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00856f;
+}
 
-  }
-  #tituloP {
-    position: absolute; 
-    top: 10vh;          
-    left: 50%;        
-    transform: translateX(-50%); 
-    font-size: 25px;
-    color: rgb(72, 0, 255);
-    margin: 0;
-    z-index: 100;  
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.295);        
-  }
+/* ===== CARD DE LOGIN ===== */
+main {
+  margin-top: 35px;
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
 
-  /* Campos Inputs */
-  .campos {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 25px;
-  }
-  
-  .campos input {
-    padding: 12px 15px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(42, 42, 42, 0.226);
-    border-radius: 8px;
-    color: rgb(0, 0, 0);
-    font-size: 15px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(2px);
-  }
-  
-  .campos input::placeholder {
-    color: rgba(0, 0, 0, 0.279); /* #888 */
-  }
-  
-  .campos input:focus {
-    outline: none;
-    border-color: rgba(19, 19, 19, 0.092); /* #ccc */
-    
-  }
-  
+#titulo {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 25px;
+}
 
-  
-  .btnInputs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .btnInputs input[type="button"] {
-    width: 100%;
-    padding: 13px;
+/* ===== CAMPOS ===== */
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    background-color: rgb(72, 0, 255);
-    color: rgb(255, 255, 255);
-    border: 1px solid rgb(119, 119, 119);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: all 0.25s ease;
-  }
-  
-  .btnInputs input[type="button"]:hover {
-   
-    border-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-  }
-  
+.campos input {
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f8f9fb;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
 
-  /* Rodápe */
-  footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 13px;
-    color: rgb(66, 66, 66); /* #999 */
-  }
-  
+.campos input:focus {
+  border-color: #00856f;
+  box-shadow: 0 0 6px rgba(0,133,111,0.2);
+  outline: none;
+}
+
+/* ===== BOTÕES ===== */
+.btnInputs {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#entrarBtn {
+  background-color: #00856f;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#entrarBtn:hover {
+  background-color: #00a88c;
+}
+
+#cadastrarBtn {
+  background-color: #eaf7f3;
+  color: #00856f;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#cadastrarBtn:hover {
+  background-color: #d6f3ec;
+}
+
+.btnInputs input:active {
+  transform: scale(0.97);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  margin-top: 40px;
+  color: #666;
+  font-size: 0.85rem;
+}

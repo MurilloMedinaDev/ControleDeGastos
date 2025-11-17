@@ -1,153 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+/* ===== RESET ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    min-height: 100vh;
-    background: radial-gradient(circle at top, rgb(94, 94, 94) 0%, rgb(0, 0, 0) 100%);
-    font-family: Arial, sans-serif;
-    color: rgb(204, 204, 204);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 60px; 
-    position: relative;
-  }
-
-  #tituloP{
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 25px;
-    color: rgba(148, 148, 148, 0.452);
-    margin: 0;
-    z-index: 100;
-  }
-
-  
-
-  main {
-    background-color: rgba(255, 255, 255, 0.03);
-    padding: 40px 30px;
-    border-radius: 8px;
-    border: 1px solid rgb(85, 85, 85);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-  
-  main h2 {
-    font-size: 24px;
-    margin-bottom: 25px;
-    color: rgb(190, 190, 190);
-  }
-  
-
-  .campos {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 25px;
-  }
-  
-  .campos input {
-    padding: 12px 15px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgb(85, 85, 85);
-    border-radius: 4px;
-    color: rgb(255, 255, 255);
-    font-size: 15px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(2px);
-  }
-  
-  .campos input::placeholder {
-    color: rgb(136, 136, 136);
-  }
-  
-  .campos input:focus {
-    outline: none;
-    border-color: rgb(204, 204, 204);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-#categoria 
-{  outline: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(2px);
-  color: rgb(255, 255, 255);    
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgb(85, 85, 85);
-  padding: 12px 15px;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-option {
-  background-color: #333333; 
-  color: rgb(255, 255, 255);          
+
+/* ===== BODY ===== */
+body {
+  background-color: #f4f7fa;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
-  #parcelasId{
-    margin-top: -30px;
-    margin-right: 290px;
-  }
 
+/* ===== TÍTULO PRINCIPAL ===== */
+#tituloP {
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00856f;
+}
 
-  .inputs-parcelas {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top:-80px;
-    margin-left: 80px;
+/* ===== TÍTULO DA PÁGINA ===== */
+#titulo {
+  font-size: 1.6rem;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #00856f;
+}
 
-  }
-  .inputs-parcelas input{
-  
-    width: 60px;       /* largura menor, ajustável */
-    padding: 8px;      /* reduz padding para ficar proporcional */
-    font-size: 14px;   /* ajusta fonte para caber melhor */
-    
-  }
-  
-  .inputs-parcelas span {
-    color: rgb(204, 204, 204);
-  }
-  
+/* ===== CONTEÚDO ===== */
+main {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+}
 
-  .btnInputs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .btnInputs input[type="button"] {
-    width: 100%;
-    padding: 13px;
-    background-color: transparent;
-    color: rgb(255, 255, 255);
-    border: 1px solid rgb(119, 119, 119);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: all 0.25s ease;
-  }
-  
-  .btnInputs input[type="button"]:hover {
-    background-color: rgb(0, 255, 157);
-    border-color: rgb(255, 255, 255);
-    color: rgb(46, 46, 46);
-  }
-  
+.Conteudo {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+}
 
-  footer {
-    margin-top: 50px;
-    font-size: 13px;
-    color: rgb(153, 153, 153);
-    text-align: center;
-  }
-  
+/* ===== CAMPOS ===== */
+.campos input,
+.campos select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: 0.2s;
+}
+
+.campos input:focus,
+.campos select:focus {
+  border-color: #00856f;
+  outline: none;
+  background-color: #eaf7f3;
+}
+
+/* ===== BOTÕES ===== */
+.btnInputs {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btnInputs input {
+  padding: 12px 25px;
+  border: none;
+  background-color: #00856f;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.btnInputs input:hover {
+  background-color: #00a88d;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  color: #777;
+  font-size: 0.9rem;
+}

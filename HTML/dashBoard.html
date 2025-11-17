@@ -7,23 +7,23 @@
     <link rel="stylesheet" href="/ControleDeGastos/CSS/styleDash.css">
 </head>
 <body>
-    <button class="btn-toggle" onclick="toggleSidebar()">☰</button>
-    <div class="sidebar">
+   
+    <div class="nav">
         <div class="menu-header">
-            <h2>Menu</h2>
+            <h2 id="titulo">Controle De Receita</h2>
         </div>
       
         <nav class="menu-links">
           <a href="NovaSaida.html">Nova Saida</a>
           <a href="NovaEntrada.html">Nova Entrada</a>
-          <a href="">Extrato</a>
+          <a href="extrato.html">Extrato</a>
           <a href="/ControleDeGastos/index.html">Sair</a>
         </nav>
       </div>
 
    
     <div class="main-content">
-        <h1>DashBoard</h1>
+      
         <div class="Caixas">
             <div class="container-perfil">
                 <div class="container">
@@ -101,7 +101,7 @@
             </div>
           
             <div class="containerVerMais">
-              <p id="textVerMais">Ver Mais</p>
+              <a href="extrato.html"  id="textVerMais">Ver Mais</a>
             </div>
           
           </div>
