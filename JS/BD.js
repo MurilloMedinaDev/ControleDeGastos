@@ -342,3 +342,24 @@ async function criarTabelaMovimentacao() {
 }
 
 //criarTabelaMovimentacao();
+
+
+async function apagarTabela() {
+  const db = await open({
+    filename: './banco.db',
+    driver: sqlite3.Database
+  });
+
+  try {
+    // Apaga a categoria com base no ID
+    await db.run('DROP TABLE entrada');
+    console.log(`excluída a tabela entrada.`);
+    } catch (erro) {
+    console.error('Erro ao apagar tabela entrada:', erro.message);
+  } finally {
+    await db.close();
+  }
+}
+
+
+//apagarTabela();
