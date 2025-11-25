@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
 /* ===== RESET ===== */
 * {
   margin: 0;
@@ -20,9 +20,10 @@ body {
 /* ===== TÍTULO PRINCIPAL ===== */
 #tituloP {
   margin-top: 40px;
-  font-size: 2rem;
-  font-weight: 700;
   color: #00856f;
+  font-family: "Story Script", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* ===== CARD DE CADASTRO ===== */
