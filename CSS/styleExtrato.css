@@ -110,3 +110,16 @@ body {
     font-weight: bold;
     text-align: right;
 }
+
+
+.movimentacoes-vazias {
+    display: flex;               
+    flex-direction: column;      
+    justify-content: center;    
+    align-items: center;         
+    height: 300px;               
+    color: #3a3a3a;                
+    font-size: 18px;            
+    gap: 10px;                   
+    font-weight: bold;
+}
