@@ -211,7 +211,32 @@ servidor.post('/saida', async (req, res) => {
 });
 
 
-// INICIALIZAÇÃO DO SERVIDOR
+servidor.delete('/movimentacao/:id', async (req, res) => {
+  try {
+    const db = await conectarBanco();
+    const { id } = req.params;
+
+    const result = await db.run(
+      'DELETE FROM movimentacao WHERE ID_Movimentacao = ?',
+      [id]
+    );
+
+    await db.close(); // fechar conexão
+
+    if (result.changes === 0) {
+      return res.status(404).json({ mensagem: "Movimentação não encontrada." });
+    }
+
+    res.json({ mensagem: "Movimentação excluída com sucesso." });
+
+  } catch (erro) {
+    console.error("Erro ao excluir:", erro);
+    res.status(500).json({ mensagem: "Erro interno do servidor." });
+  }
+});
+
+
+// iniciar SERVIDOR
 
 
 servidor.listen(3000, async () => {

@@ -21,6 +21,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('totalSaida').textContent = `${dados.totalSaida}`;
       document.getElementById('totalEntrada').textContent = `${dados.totalEntrada}`;
 
+      
+      localStorage.setItem('id_usuario', dados.ID_usuario);
+
       // Chama a função para carregar as movimentações do usuário
       await carregarMovimentacoes(dados.ID_usuario);
 

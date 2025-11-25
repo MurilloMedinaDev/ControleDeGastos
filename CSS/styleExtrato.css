@@ -1,4 +1,3 @@
-/* ===== Layout Geral ===== */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -6,14 +5,14 @@ body {
     color: #333;
 }
 
-/* ===== Header ===== */
+/* ---------------------- HEADER ---------------------- */
+
 .header-extrato {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px;
     background: #ffffff;
-    color: #fff;
 }
 
 .btn-voltar,
@@ -30,53 +29,84 @@ body {
 
 .btn-voltar:hover,
 .btn-filtrar:hover {
-    background: #475569;
+    background: #00806d;
 }
 
-/* ===== Lista de Movimentações ===== */
+/* ---------------------- LISTA ---------------------- */
+
 .container-Movimentacao {
-    width: 90%;
+    width: 95%;
+    max-width: 1000px;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-/* ===== Cartão de Movimentação ===== */
 .container {
     background: #ffffff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+
     display: grid;
-    grid-template-columns: 100px 1fr 1fr auto;
+    grid-template-columns: 120px 1fr 1fr 80px 120px 40px;
+    /* data | categoria | nome | parcelas | valor | botão excluir */
     align-items: center;
+    gap: 60px;
 }
 
-/* Datas */
+/* Botão excluir */
+.btn-excluir {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    background: #e11d48;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-excluir:hover {
+    background: #b91c1c;
+}
+
+/* ---------------------- CAMPOS ---------------------- */
+
+.parcelas {
+    font-size: 14px;
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
 .dataMovi {
     font-size: 14px;
     font-weight: bold;
     color: #1e293b;
 }
 
-/* Categoria */
 .categoriaMovi {
     font-size: 14px;
     color: #475569;
 }
 
-/* Descrição */
 .textMovi {
     font-size: 15px;
     font-weight: bold;
 }
 
-/* Valor */
-.valorMovi {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: right;
-    color: #0f172a;
+.parcelasNum,
+.parcelasTotal {
+    font-size: 14px;
+    color: #475569;
 }
 
+.valorMovi {
+    font-size: 17px;
+    font-weight: bold;
+    text-align: right;
+}
