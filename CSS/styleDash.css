@@ -250,3 +250,14 @@ h1 {
 .containerVerMais a:hover {
   color: #00c292;
 }
+
+footer {
+  position: fixed; 
+  bottom: 0;        
+  left: 50%;        
+  transform: translateX(-50%); 
+  text-align: center;
+  width: 100%;       
+  color: #777;
+  font-size: 0.9rem;
+}

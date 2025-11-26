@@ -109,7 +109,8 @@ main {
 
 /* ===== FOOTER ===== */
 footer {
-  margin-top: 40px;
-  color: #666;
-  font-size: 0.85rem;
+  margin-top: auto;
+  padding: 20px 0;
+  color: #777;
+  font-size: 0.9rem;
 }

@@ -112,10 +112,13 @@ main {
   background-color: #ff7676;
 }
 
-/* ===== FOOTER ===== */
 footer {
-  margin-top: auto;
-  padding: 20px 0;
+  position: fixed; 
+  bottom: 0;        
+  left: 50%;        
+  transform: translateX(-50%); 
+  text-align: center;
+  width: 100%;       
   color: #777;
   font-size: 0.9rem;
 }

@@ -108,9 +108,14 @@ main {
   transform: scale(0.97);
 }
 
-/* ===== FOOTER ===== */
+
 footer {
-  margin-top: 40px;
-  color: #666;
-  font-size: 0.85rem;
+  position: fixed; 
+  bottom: 0;        
+  left: 50%;        
+  transform: translateX(-50%); 
+  text-align: center;
+  width: 100%;       
+  color: #777;
+  font-size: 0.9rem;
 }
