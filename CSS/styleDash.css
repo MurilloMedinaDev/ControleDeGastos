@@ -66,9 +66,9 @@ height: 10vh;
 
 
 .main-content {
-  margin-left: 240px;
-  width: calc(100% - 260px);
+  margin-left: 10vw;
   padding: 40px;
+  
 }
 
 h1 {
@@ -129,7 +129,8 @@ h1 {
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 20px;
-  width: 200px;
+  width: 185px;
+  height: 150px;
   text-align: center;
 }
 
@@ -260,4 +261,23 @@ footer {
   width: 100%;       
   color: #777;
   font-size: 0.9rem;
+}
+
+
+.categorias-list {
+  margin-left: 50px;
+  margin-top: -258px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 25px 20px;
+  width: 250px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1vw;
+  color: #333;
+  flex-direction: column;
+  gap: 100px;
+
+
+  
 }

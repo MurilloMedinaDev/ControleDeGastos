@@ -74,7 +74,32 @@ const saldoTotal = totalEntradas - totalSaidas;
       const container = containers[i];
       if (!container) return;
 
+
+
+      const iconesCategoria = {
+        1: "🎬",   // Entretenimento
+        2: "🍎",   // Alimentação
+        3: "📱",   // Celular
+        4: "🎓",   // Educação
+        5: "💊",   // Saúde
+        7: "🏠",   // Casa
+        8: "👕",   // Vestuário
+        9: "🧾",   // Contas
+        10: "💄",  // Beleza
+        11: "🐶",  // Pets
+        12: "🚗",  // Carro
+        13: "🍽️", // Restaurante
+        14: "🎵",  // Música
+        15: "📌",  // Outros
+        16: "💵",  // Salário
+        17: "📈",  // Investimento
+        18: "➕",  // Extra
+        19: "🎁",  // Décimo
+        20: "🏷️"   // Outros
+    };
+
       const dataElem = container.querySelector('.dataMovi');
+      
       const categoriaElem = container.querySelector('.categoriaMovi');
       const nomeElem = container.querySelector('.textMovi');
       const valorElem = container.querySelector('.valorMovi');
@@ -84,7 +109,7 @@ const saldoTotal = totalEntradas - totalSaidas;
       const cor = item.ID_tipoMovi === 2 ? 'red' : 'green';
 
       dataElem.textContent = dataFormatada;
-      categoriaElem.textContent = item.ID_Categoria;
+      categoriaElem.textContent = iconesCategoria[item.ID_Categoria] || "❓";
       nomeElem.textContent = item.nome;
       valorElem.textContent = `${sinal} R$ ${item.valor.toFixed(2)}`;
       valorElem.style.color = cor;

@@ -18,31 +18,56 @@ async function carregarTodasMovimentacoes(id_usuario) {
             lista.appendChild(vazioDiv);
             return;
         }
+// Mapeamento de ID_Categoria para ícone (emoji ou URL de imagem)
+const iconesCategoria = {
+    1: "🎬 Entretenimento",   // Entretenimento
+    2: "🍎 Alimentação",   // Alimentação
+    3: "📱  Celular",   // Celular
+    4: "🎓 Educação",   // Educação
+    5: "💊 Saúde",   // Saúde
+    7: "🏠 Casa",   // Casa
+    8: "👕 Vestuario",   // Vestuário
+    9: "🧾 Contas",   // Contas
+    10: "💄 Beleza",  // Beleza
+    11: "🐶 Pets",  // Pets
+    12: "🚗 Carro",  // Carro
+    13: "🍽️ Restaurante", // Restaurante
+    14: "🎵 Musica",  // Música
+    15: "📌 Outros",  // Outros
+    16: "💵 Salario",  // Salário
+    17: "📈 Investimento",  // Investimento
+    18: "➕ Extra",  // Extra
+    19: "🎁 Décimo",  // Décimo
+    20: "🏷️ Outros"   // Outros
+};
 
-        movimentacoes.forEach(item => {
-            const div = document.createElement('div');
-            div.classList.add('container');
-            div.setAttribute("data-id", item.ID_Movimentacao);
+movimentacoes.forEach(item => {
+    const div = document.createElement('div');
+    div.classList.add('container');
+    div.setAttribute("data-id", item.ID_Movimentacao);
 
-            const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-            const sinal = item.ID_tipoMovi === 2 ? '-' : '+';
-            const cor = item.ID_tipoMovi === 2 ? 'red' : 'green';
+    const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    const sinal = item.ID_tipoMovi === 2 ? '-' : '+';
+    const cor = item.ID_tipoMovi === 2 ? 'red' : 'green';
 
-            let parcelasTexto = "";
-            if (item.qntParcela && item.unParcela) parcelasTexto = `${item.unParcela}/${item.qntParcela}`;
-            else if (item.qntParcela || item.unParcela) parcelasTexto = "-/-";
+    let parcelasTexto = "";
+    if (item.qntParcela && item.unParcela) parcelasTexto = `${item.unParcela}/${item.qntParcela}`;
+    else if (item.qntParcela || item.unParcela) parcelasTexto = "-/-";
 
-            div.innerHTML = `
-                <p class="dataMovi">${dataFormatada}</p>
-                <p class="categoriaMovi">${item.ID_Categoria}</p>
-                <p class="textMovi">${item.nome}</p>
-                <p class="parcelas">${parcelasTexto}</p>
-                <p class="valorMovi" style="color:${cor};">${sinal} R$ ${item.valor.toFixed(2)}</p>
-                <button class="btn-excluir">X</button>
-            `;
+    // Aqui substituímos o ID pelo ícone
+    const icone = iconesCategoria[item.ID_Categoria] ? iconesCategoria[item.ID_Categoria] : "❓";
 
-            lista.appendChild(div);
-        });
+    div.innerHTML = `
+        <p class="dataMovi">${dataFormatada}</p>
+        <p class="categoriaMovi">${icone}</p>
+        <p class="textMovi">${item.nome}</p>
+        <p class="parcelas">${parcelasTexto}</p>
+        <p class="valorMovi" style="color:${cor};">${sinal} R$ ${item.valor.toFixed(2)}</p>
+        <button class="btn-excluir">X</button>
+    `;
+
+    lista.appendChild(div);
+});
 
     } catch (erro) {
         console.error('Erro ao carregar movimentações:', erro);
@@ -75,3 +100,27 @@ document.addEventListener("click", async function(e) {
         }
     }
 });
+
+
+
+
+const janelaFiltro = document.getElementById("janelaFiltro");
+const abrirFiltro = document.getElementById("abrirFiltro");
+const fecharFiltro = document.getElementById("fecharFiltro");
+
+// abrir janela
+abrirFiltro.onclick = () => {
+    janelaFiltro.style.display = "flex";
+};
+
+// fechar janela
+fecharFiltro.onclick = () => {
+    janelaFiltro.style.display = "none";
+};
+
+// clicar fora da janela
+window.onclick = (e) => {
+    if (e.target === janelaFiltro) {
+        janelaFiltro.style.display = "none";
+    }
+};
