@@ -24,7 +24,8 @@ const iconesCategoria = {
     2: "🍎 Alimentação",   // Alimentação
     3: "📱  Celular",   // Celular
     4: "🎓 Educação",   // Educação
-    5: "💊 Saúde",   // Saúde
+    5: "💻 Tecnologia ",
+    6: "❤️ Saúde",   // Saúde
     7: "🏠 Casa",   // Casa
     8: "👕 Vestuario",   // Vestuário
     9: "🧾 Contas",   // Contas

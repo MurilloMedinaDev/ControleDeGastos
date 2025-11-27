@@ -173,6 +173,16 @@ h1 {
 }
 
 /*  MOVIMENTAÇÕES  */
+/* Quando não há movimentações */
+.container-Movimentacao.vazio .container {
+  display: none;
+}
+
+.container-Movimentacao.vazio {
+  height: 120px;
+  overflow: hidden;
+  opacity: 0.85;
+}
 .container-Movimentacao {
   background-color: #fff;
   border-radius: 15px;

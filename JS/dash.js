@@ -71,6 +71,29 @@ const saldoTotal = totalEntradas - totalSaidas;
 
     // Mostra as últimas 5 movimentações
     movimentacoes.slice(0, 5).forEach((item, i) => {
+
+      // Se NÃO tiver nenhuma movimentação
+// Caso não haja movimentações
+if (movimentacoes.length === 0) {
+
+  containerPai.classList.add("vazio");
+  containerVerMais.style.display = "flex";
+
+  if (!document.getElementById("msgVazia")) {
+      const msg = document.createElement("p");
+      msg.id = "msgVazia";
+      msg.textContent = "Nenhuma movimentação encontrada...";
+      msg.style.textAlign = "center";
+      msg.style.marginTop = "20px";
+      msg.style.color = "#888";
+      msg.style.fontSize = "1rem";
+      mainContent.appendChild(msg);
+  }
+
+  return;
+}
+
+
       const container = containers[i];
       if (!container) return;
 
@@ -81,7 +104,8 @@ const saldoTotal = totalEntradas - totalSaidas;
         2: "🍎",   // Alimentação
         3: "📱",   // Celular
         4: "🎓",   // Educação
-        5: "💊",   // Saúde
+        5: "💻", 
+        6: "❤️",   // Saúde
         7: "🏠",   // Casa
         8: "👕",   // Vestuário
         9: "🧾",   // Contas
