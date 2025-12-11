@@ -248,6 +248,7 @@ h1 {
 .containerVerMais {
   text-align: center;
   margin-top: 15px;
+  justify-content: center; 
 }
 
 .containerVerMais a {

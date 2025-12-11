@@ -1,5 +1,3 @@
-
-
 window.addEventListener('DOMContentLoaded', async () => {
   const nome = localStorage.getItem('usuarioNome');
   const email = localStorage.getItem('usuarioEmail');
@@ -9,22 +7,18 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   if (email) {
     try {
-      // Busca ID do usuário
       const resposta = await fetch(`http://localhost:3000/usuario/${encodeURIComponent(email)}`);
       if (!resposta.ok) throw new Error('Erro ao buscar ID');
 
       const dados = await resposta.json();
 
-      // Atualiza dados do usuário
       document.getElementById('ID_usu').textContent = `ID: ${dados.ID_usuario}`;
       document.getElementById('saldoAtual').textContent = `${dados.saldo}`;
       document.getElementById('totalSaida').textContent = `${dados.totalSaida}`;
       document.getElementById('totalEntrada').textContent = `${dados.totalEntrada}`;
 
-      
       localStorage.setItem('id_usuario', dados.ID_usuario);
 
-      // Chama a função para carregar as movimentações do usuário
       await carregarMovimentacoes(dados.ID_usuario);
 
     } catch (erro) {
@@ -32,98 +26,95 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
   }
 });
+
 async function carregarMovimentacoes(id_usuario) {
   try {
     const resposta = await fetch(`http://localhost:3000/movimentacoes/${id_usuario}`);
     if (!resposta.ok) throw new Error(`Erro ao buscar movimentações (status ${resposta.status})`);
 
     const movimentacoes = await resposta.json();
+
+    const containerMov = document.querySelector('.container-Movimentacao');
+    const containerVerMais = document.querySelector('.containerVerMais');
+    const mainContent = document.querySelector('.main-content');
     const containers = document.querySelectorAll('.container-Movimentacao .container');
 
+    // CALCULA TOTAIS
+    const totalEntradas = movimentacoes
+      .filter(m => m.ID_tipoMovi === 1)
+      .reduce((soma, m) => soma + m.valor, 0);
 
+    const totalSaidas = movimentacoes
+      .filter(m => m.ID_tipoMovi === 2)
+      .reduce((soma, m) => soma + m.valor, 0);
 
+    const saldoTotal = totalEntradas - totalSaidas;
 
-
-
-const totalEntradas = movimentacoes
-.filter(movimentacao => movimentacao.ID_tipoMovi === 1)
-.reduce((soma, movimentacao) => soma + movimentacao.valor, 0);
-
-
-const totalSaidas = movimentacoes
-.filter(movimentacao => movimentacao.ID_tipoMovi === 2)
-.reduce((soma, movimentacao) => soma + movimentacao.valor, 0);
-
-const saldoTotal = totalEntradas - totalSaidas;
-
-   
-
-
-
-
-
-
-
-
+    // ATUALIZA TOTAIS NA TELA
     document.getElementById('totalEntrada').textContent = `+R$ ${totalEntradas.toFixed(2)}`;
     document.getElementById('totalSaida').textContent = `-R$ ${totalSaidas.toFixed(2)}`;
     document.getElementById('saldoAtual').textContent = `R$ ${saldoTotal.toFixed(2)}`;
 
-    // Mostra as últimas 5 movimentações
-    movimentacoes.slice(0, 5).forEach((item, i) => {
+    // ===========================================
+    // CASO NÃO EXISTA NENHUMA MOVIMENTAÇÃO
+    // ===========================================
+    if (movimentacoes.length === 0) {
 
-      // Se NÃO tiver nenhuma movimentação
-// Caso não haja movimentações
-if (movimentacoes.length === 0) {
+      containerMov.classList.add("vazio"); // esconde containers internos
 
-  containerPai.classList.add("vazio");
-  containerVerMais.style.display = "flex";
+      // Remove mensagem antiga
+      const msgAntiga = document.getElementById("msgVazia");
+      if (msgAntiga) msgAntiga.remove();
 
-  if (!document.getElementById("msgVazia")) {
+      // Cria a mensagem dentro do container
       const msg = document.createElement("p");
       msg.id = "msgVazia";
       msg.textContent = "Nenhuma movimentação encontrada...";
       msg.style.textAlign = "center";
-      msg.style.marginTop = "20px";
+      msg.style.marginTop = "15px";
       msg.style.color = "#888";
       msg.style.fontSize = "1rem";
-      mainContent.appendChild(msg);
-  }
+      containerMov.appendChild(msg);
 
-  return;
-}
+      // Esconde botão "Ver mais"
+      if (containerVerMais) containerVerMais.style.display = "none";
 
+      return;
+    }
 
-      const container = containers[i];
-      if (!container) return;
+    // ===========================================
+    // SE EXISTIREM MOVIMENTAÇÕES
+    // ===========================================
 
+    containerMov.classList.remove("vazio");
 
+    // Remove mensagem "vazia" caso exista
+    const msgV = document.getElementById("msgVazia");
+    if (msgV) msgV.remove();
 
-      const iconesCategoria = {
-        1: "🎬",   // Entretenimento
-        2: "🍎",   // Alimentação
-        3: "📱",   // Celular
-        4: "🎓",   // Educação
-        5: "💻", 
-        6: "❤️",   // Saúde
-        7: "🏠",   // Casa
-        8: "👕",   // Vestuário
-        9: "🧾",   // Contas
-        10: "💄",  // Beleza
-        11: "🐶",  // Pets
-        12: "🚗",  // Carro
-        13: "🍽️", // Restaurante
-        14: "🎵",  // Música
-        15: "📌",  // Outros
-        16: "💵",  // Salário
-        17: "📈",  // Investimento
-        18: "➕",  // Extra
-        19: "🎁",  // Décimo
-        20: "🏷️"   // Outros
+    // Mostra botão ver mais
+    if (containerVerMais) containerVerMais.style.display = "flex";
+
+    // Esconde todos containers antes de distribuir dados
+    containers.forEach(c => c.style.display = "none");
+
+    // ÍCONES DE CATEGORIA
+    const iconesCategoria = {
+      1: "🎬", 2: "🍎", 3: "📱", 4: "🎓",
+      5: "💻", 6: "❤️", 7: "🏠", 8: "👕",
+      9: "🧾", 10: "💄", 11: "🐶", 12: "🚗",
+      13: "🍽️", 14: "🎵", 15: "📌", 16: "💵",
+      17: "📈", 18: "➕", 19: "🎁", 20: "🏷️"
     };
 
+    // DISTRIBUI MOVIMENTAÇÕES NOS CONTAINERS
+    movimentacoes.forEach((item, i) => {
+      const container = containers[i];
+      if (!container) return; // Se não existir mais caixas, para
+
+      container.style.display = "flex";
+
       const dataElem = container.querySelector('.dataMovi');
-      
       const categoriaElem = container.querySelector('.categoriaMovi');
       const nomeElem = container.querySelector('.textMovi');
       const valorElem = container.querySelector('.valorMovi');
