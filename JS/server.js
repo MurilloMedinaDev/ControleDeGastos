@@ -21,10 +21,7 @@ async function conectarBanco() {
       ID_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT,
       email TEXT UNIQUE,
-      senha TEXT,
-      saldo REAL DEFAULT 0.00,
-      totalEntrada REAL DEFAULT 0.00,
-      totalSaida REAL DEFAULT 0.00
+      senha TEXT
     )
   `);
 
