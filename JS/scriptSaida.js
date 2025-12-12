@@ -1,3 +1,4 @@
+//FUNÇÃO AO CLICAR BOTAO VOLTAR
 document.getElementById('S-voltarBtn').addEventListener('click',()=>{
 
 window.location.href = "dashBoard.html"
@@ -5,7 +6,7 @@ window.location.href = "dashBoard.html"
 
 })
 
-
+//FUNÇÃO AO CLICAR NO BOTAO ADICIONAR
 document.getElementById('novaSaidaBtn').addEventListener('click', async() =>{
 
     const nome = document.getElementById('nomeSaida').value.trim();
@@ -19,6 +20,8 @@ document.getElementById('novaSaidaBtn').addEventListener('click', async() =>{
     const ID_usuario = localStorage.getItem('ID_usuario');
 
 
+    //VERIFICA SE TODOS OS CAMPOS ESTÃO PREECHIDOS
+
     if (!nome || !valor|| !data || !ID_Categoria){
         alert('Preencha todos os campos!');
         return;
@@ -28,17 +31,20 @@ document.getElementById('novaSaidaBtn').addEventListener('click', async() =>{
       
       try {
     
-      console.log("DEBUG → Dados que serão enviados:");
-
+  // Envia os dados para o servidor (rota /saida)
     const resposta = await fetch('http://localhost:3000/saida', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, valor, data, qntParcela,unParcela, ID_usuario, ID_Categoria})
     });
 
+     // Lê a resposta do servidor e transforma em objeto JavaScript
     const dados = await resposta.json();
     alert(dados.mensagem);
-  } catch (erro) {
+  } 
+  
+  // Caso o servidor diga que deu erro 
+  catch (erro) {
     console.error('Erro:', erro);
     alert('Erro ao conectar ao servidor.');
   }

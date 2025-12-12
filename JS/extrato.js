@@ -18,7 +18,7 @@ async function carregarTodasMovimentacoes(id_usuario) {
             lista.appendChild(vazioDiv);
             return;
         }
-// Mapeamento de ID_Categoria para ícone (emoji ou URL de imagem)
+// Mapeamento de ID_Categoria para ícone
 const iconesCategoria = {
     1: "🎬 Entretenimento",   // Entretenimento
     2: "🍎 Alimentação",   // Alimentação
@@ -42,22 +42,34 @@ const iconesCategoria = {
     20: "🏷️ Outros"   // Outros
 };
 
+
+
 movimentacoes.forEach(item => {
     const div = document.createElement('div');
     div.classList.add('container');
     div.setAttribute("data-id", item.ID_Movimentacao);
 
-    const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-    const sinal = item.ID_tipoMovi === 2 ? '-' : '+';
-    const cor = item.ID_tipoMovi === 2 ? 'red' : 'green';
 
+    //FORMATA DATA MODELO BRASIL, DIA/MES/ANO
+    const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+
+
+    // Define sinal e cor conforme o tipo de movimento (1 = entrada, 2 = saída)
+    const sinal = item.ID_tipoMovi === 2 ? '-' : '+';
+    const cor = item.ID_tipoMovi === 2 ? 'red' : 'green'; // saída vermelho, entrada verde
+
+    //NAO TEM PARCELA ENTAO FICA VAZIO
     let parcelasTexto = "";
+
+    //SE EXISTIR PARCELA SUBSTITUA PELO CONTEUDO DA VARIAVEL
     if (item.qntParcela && item.unParcela) parcelasTexto = `${item.unParcela}/${item.qntParcela}`;
-    else if (item.qntParcela || item.unParcela) parcelasTexto = "-/-";
+
+  
 
     // Aqui substituímos o ID pelo ícone
     const icone = iconesCategoria[item.ID_Categoria] ? iconesCategoria[item.ID_Categoria] : "❓";
 
+    //COLOCANDO INFOS
     div.innerHTML = `
         <p class="dataMovi">${dataFormatada}</p>
         <p class="categoriaMovi">${icone}</p>
@@ -75,6 +87,8 @@ movimentacoes.forEach(item => {
     }
 }
 
+
+//VERIFICAÇÃO SE SALVOU ID NO LOCALSTORAGE
 const idUsuario = localStorage.getItem("id_usuario");
 if (idUsuario) carregarTodasMovimentacoes(idUsuario);
 else console.error("ID do usuário não encontrado no localStorage.");
@@ -102,26 +116,3 @@ document.addEventListener("click", async function(e) {
     }
 });
 
-
-
-
-const janelaFiltro = document.getElementById("janelaFiltro");
-const abrirFiltro = document.getElementById("abrirFiltro");
-const fecharFiltro = document.getElementById("fecharFiltro");
-
-// abrir janela
-abrirFiltro.onclick = () => {
-    janelaFiltro.style.display = "flex";
-};
-
-// fechar janela
-fecharFiltro.onclick = () => {
-    janelaFiltro.style.display = "none";
-};
-
-// clicar fora da janela
-window.onclick = (e) => {
-    if (e.target === janelaFiltro) {
-        janelaFiltro.style.display = "none";
-    }
-};

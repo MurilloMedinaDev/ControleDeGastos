@@ -36,7 +36,8 @@ async function adicionarColunaSaldoEntrada() {
     // Adiciona a nova coluna "saldo" se ela ainda não existir
     await db.exec(`ALTER TABLE usuario ADD COLUMN totalEntrada REAL DEFAULT 0.00;`);
     console.log('Coluna "totalEntrada" adicionada com sucesso!');
-  } catch (erro) {
+  }
+   catch (erro) {
     if (erro.message.includes('duplicate column')) {
       console.log('A coluna "totalSaida" já existe. Nenhuma alteração feita.');
     } else {

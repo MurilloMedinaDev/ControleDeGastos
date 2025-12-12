@@ -5,14 +5,14 @@ const campoEmail = document.getElementById('email');
 const campoSenha = document.getElementById('senha');
 
 
-// BOTÃO "ENTRAR" — FAZ LOGIN DO USUÁRIO
+// FUNÇÃO AO CLICAR NO BOTÃO "ENTRAR" — FAZ LOGIN DO USUÁRIO
 
 botaoEntrar.addEventListener('click', async () => {
   // Pega o valor digitado nos campos e (trim) = remove espaços extras
   const email = campoEmail.value.trim();
   const senha = campoSenha.value.trim();
 
-
+//VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
   if (!email || !senha) {
     alert('Por favor, preencha o e-mail e a senha antes de continuar.');
     return;
@@ -22,8 +22,8 @@ botaoEntrar.addEventListener('click', async () => {
     // Envia os dados para o servidor (rota /login)
     const resposta = await fetch('http://localhost:3000/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }, // Informamos que estamos enviando JSON
-      body: JSON.stringify({ email, senha }) // Converte os dados em texto JSON
+      headers: { 'Content-Type': 'application/json' }, 
+      body: JSON.stringify({ email, senha }) 
     });
 
     // Lê a resposta do servidor e transforma em objeto JavaScript

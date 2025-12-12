@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('nomeBD').textContent = nome || 'Usuário';
   document.getElementById('emailBD').textContent = email || '';
 
+  //BUSCA OS DADOS NO BD POR EMAIL LOGIN
   if (email) {
     try {
       const resposta = await fetch(`http://localhost:3000/usuario/${encodeURIComponent(email)}`);
@@ -27,6 +28,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+//BUSCA AS MOVIMENTAÇÕES NO BANCO PELO ID
 async function carregarMovimentacoes(id_usuario) {
   try {
     const resposta = await fetch(`http://localhost:3000/movimentacoes/${id_usuario}`);
@@ -39,25 +41,26 @@ async function carregarMovimentacoes(id_usuario) {
     const mainContent = document.querySelector('.main-content');
     const containers = document.querySelectorAll('.container-Movimentacao .container');
 
-    // CALCULA TOTAIS
+    // CALCULA VALOR TOTAL DAS ENTRADAS
     const totalEntradas = movimentacoes
       .filter(m => m.ID_tipoMovi === 1)
       .reduce((soma, m) => soma + m.valor, 0);
 
+    // CALCULA VALOR TOTAL DAS SAIDAS
     const totalSaidas = movimentacoes
       .filter(m => m.ID_tipoMovi === 2)
       .reduce((soma, m) => soma + m.valor, 0);
 
     const saldoTotal = totalEntradas - totalSaidas;
 
-    // ATUALIZA TOTAIS NA TELA
+    // ATUALIZA TOTAIS NA TELA NOS CONTAINERS DE VALORES
     document.getElementById('totalEntrada').textContent = `+R$ ${totalEntradas.toFixed(2)}`;
     document.getElementById('totalSaida').textContent = `-R$ ${totalSaidas.toFixed(2)}`;
     document.getElementById('saldoAtual').textContent = `R$ ${saldoTotal.toFixed(2)}`;
 
-    // ===========================================
+
     // CASO NÃO EXISTA NENHUMA MOVIMENTAÇÃO
-    // ===========================================
+
     if (movimentacoes.length === 0) {
 
       containerMov.classList.add("vazio"); // esconde containers internos
@@ -82,9 +85,9 @@ async function carregarMovimentacoes(id_usuario) {
       return;
     }
 
-    // ===========================================
+
     // SE EXISTIREM MOVIMENTAÇÕES
-    // ===========================================
+
 
     containerMov.classList.remove("vazio");
 
@@ -110,7 +113,7 @@ async function carregarMovimentacoes(id_usuario) {
     // DISTRIBUI MOVIMENTAÇÕES NOS CONTAINERS
     movimentacoes.forEach((item, i) => {
       const container = containers[i];
-      if (!container) return; // Se não existir mais caixas, para
+      if (!container) return; // Se não existir mais caixas, para. NAO APARECE CAIXAS VAZIAS
 
       container.style.display = "flex";
 
@@ -119,11 +122,14 @@ async function carregarMovimentacoes(id_usuario) {
       const nomeElem = container.querySelector('.textMovi');
       const valorElem = container.querySelector('.valorMovi');
 
+
+//TROCA A DATA PARA FORMATO BRASIL DIA/MES/ANO
       const dataFormatada = new Date(item.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
       const sinal = item.ID_tipoMovi === 2 ? '-' : '+';
       const cor = item.ID_tipoMovi === 2 ? 'red' : 'green';
 
       dataElem.textContent = dataFormatada;
+    // CASO NÃO COLOQUE A CATEGORIA FICA O EMOJI DE INTERROGAÇÃO
       categoriaElem.textContent = iconesCategoria[item.ID_Categoria] || "❓";
       nomeElem.textContent = item.nome;
       valorElem.textContent = `${sinal} R$ ${item.valor.toFixed(2)}`;
