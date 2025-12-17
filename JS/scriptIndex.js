@@ -44,7 +44,7 @@ botaoEntrar.addEventListener('click', async () => {
 
     
      
-      window.location.href = '/ControleDeGastos/HTML/dashBoard.html';
+      window.location.href = '/ControleDeGastos/HTML/MyFinance.html';
     }
 
      else {
