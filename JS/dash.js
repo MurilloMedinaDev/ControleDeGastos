@@ -26,7 +26,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
   }
 });
-
 async function carregarMovimentacoes(id_usuario) {
   try {
     const resposta = await fetch(`http://localhost:3000/movimentacoes/${id_usuario}`);
@@ -36,10 +35,11 @@ async function carregarMovimentacoes(id_usuario) {
 
     const containerMov = document.querySelector('.container-Movimentacao');
     const containerVerMais = document.querySelector('.containerVerMais');
-    const mainContent = document.querySelector('.main-content');
     const containers = document.querySelectorAll('.container-Movimentacao .container');
 
-    // CALCULA TOTAIS
+    // =========================
+    // CALCULA TOTAIS (TODAS)
+    // =========================
     const totalEntradas = movimentacoes
       .filter(m => m.ID_tipoMovi === 1)
       .reduce((soma, m) => soma + m.valor, 0);
@@ -50,23 +50,19 @@ async function carregarMovimentacoes(id_usuario) {
 
     const saldoTotal = totalEntradas - totalSaidas;
 
-    // ATUALIZA TOTAIS NA TELA
     document.getElementById('totalEntrada').textContent = `+R$ ${totalEntradas.toFixed(2)}`;
     document.getElementById('totalSaida').textContent = `-R$ ${totalSaidas.toFixed(2)}`;
     document.getElementById('saldoAtual').textContent = `R$ ${saldoTotal.toFixed(2)}`;
 
-    // ===========================================
-    // CASO NÃO EXISTA NENHUMA MOVIMENTAÇÃO
-    // ===========================================
+    // =========================
+    // SEM MOVIMENTAÇÕES
+    // =========================
     if (movimentacoes.length === 0) {
+      containerMov.classList.add("vazio");
 
-      containerMov.classList.add("vazio"); // esconde containers internos
-
-      // Remove mensagem antiga
       const msgAntiga = document.getElementById("msgVazia");
       if (msgAntiga) msgAntiga.remove();
 
-      // Cria a mensagem dentro do container
       const msg = document.createElement("p");
       msg.id = "msgVazia";
       msg.textContent = "Nenhuma movimentação encontrada...";
@@ -76,29 +72,30 @@ async function carregarMovimentacoes(id_usuario) {
       msg.style.fontSize = "1rem";
       containerMov.appendChild(msg);
 
-      // Esconde botão "Ver mais"
       if (containerVerMais) containerVerMais.style.display = "none";
-
       return;
     }
 
-    // ===========================================
-    // SE EXISTIREM MOVIMENTAÇÕES
-    // ===========================================
-
+    // =========================
+    // EXISTEM MOVIMENTAÇÕES
+    // =========================
     containerMov.classList.remove("vazio");
 
-    // Remove mensagem "vazia" caso exista
     const msgV = document.getElementById("msgVazia");
     if (msgV) msgV.remove();
 
-    // Mostra botão ver mais
     if (containerVerMais) containerVerMais.style.display = "flex";
 
-    // Esconde todos containers antes de distribuir dados
+    // ORDENA (MAIS RECENTE PRIMEIRO)
+    movimentacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    // PEGA SÓ AS 5 ÚLTIMAS
+    const ultimas5 = movimentacoes.slice(0, 5);
+
+    // ESCONDE TODOS OS CONTAINERS
     containers.forEach(c => c.style.display = "none");
 
-    // ÍCONES DE CATEGORIA
+    // ÍCONES
     const iconesCategoria = {
       1: "🎬", 2: "🍎", 3: "📱", 4: "🎓",
       5: "💻", 6: "❤️", 7: "🏠", 8: "👕",
@@ -107,10 +104,10 @@ async function carregarMovimentacoes(id_usuario) {
       17: "📈", 18: "➕", 19: "🎁", 20: "🏷️"
     };
 
-    // DISTRIBUI MOVIMENTAÇÕES NOS CONTAINERS
-    movimentacoes.forEach((item, i) => {
+    // DISTRIBUI AS 5 MOVIMENTAÇÕES
+    ultimas5.forEach((item, i) => {
       const container = containers[i];
-      if (!container) return; // Se não existir mais caixas, para
+      if (!container) return;
 
       container.style.display = "flex";
 
