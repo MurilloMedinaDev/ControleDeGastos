@@ -69,10 +69,12 @@ npm install
 
 O projeto utiliza **SQLite**, portanto **não é necessário instalar banco externo**.
 
-* O arquivo `banco.db` já está incluído no projeto
-* Caso não exista, ele será criado automaticamente pelo servidor
+- O arquivo `banco.db` já está incluído no projeto
+- Caso não exista, ele será criado automaticamente pelo servidor
+- **Verifique se as tabelas estão criadas corretamente:** `Usuario`, `Movimentacoes` e `Categoria`
 
----
+> Caso alguma tabela não exista, reinicie o servidor para que a criação automática seja executada.
+
 
 ### 4️⃣ Iniciar o servidor
 
