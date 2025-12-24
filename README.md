@@ -16,7 +16,6 @@ Projeto desenvolvido para fins de estudo, utilizando **HTML, CSS, JavaScript, No
 * Persistência de dados com SQLite
 
 ---
-
 ## 🛠️ Tecnologias utilizadas
 
 * HTML5
