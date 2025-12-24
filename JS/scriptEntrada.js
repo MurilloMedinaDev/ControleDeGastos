@@ -1,6 +1,6 @@
 //FUNÇÃO AO CLICAR NO BOTAO VOLTAR
 document.getElementById('E-voltarBtn').addEventListener('click',()=>{
-window.location.href = "dashBoard.html"
+window.location.href = "MyFinance.html"
 
 })
 

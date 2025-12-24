@@ -238,13 +238,14 @@ h1 {
 
 .valorMovi.entrada {
   color: #00c292;
+
 }
 
 .valorMovi.saida {
   color: #ff5b5b;
 }
 
-/* ===== VER MAIS ===== */
+/*  VER MAIS */
 .containerVerMais {
   text-align: center;
   margin-top: 15px;
