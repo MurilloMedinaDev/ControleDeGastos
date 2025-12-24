@@ -138,7 +138,10 @@ MyFinance/
 
 ## 🔐 Observações
 
-* Os dados de autenticação no frontend utilizam `localStorage`
+* Os dados de autenticação são persistidos no banco de dados (SQLite) e acessados através de uma API REST
+  
+*Após a autenticação, algumas informações do usuário são armazenadas no localStorage, com o objetivo de facilitar a navegação e a movimentação entre as páginas do sistema
+
 * Projeto com foco **educacional**, não indicado para produção sem melhorias de segurança
 
 ---
